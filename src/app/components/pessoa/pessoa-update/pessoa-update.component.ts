@@ -52,6 +52,7 @@ export class PessoaUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.usuario = new Usuario();
     this.usuario.pessoa = new Pessoa();
+    this.usuario.cargo = new Cargo();
     this.usuario.pessoa.endereco = new Endereco();
     this.usuario.dataEntrada = this.dataEntrada.value;
     this.usuario.pessoa.nome = this.nome.value;

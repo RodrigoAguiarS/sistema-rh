@@ -15,4 +15,8 @@ export class MensagemService {
   showErrorMensagem(message: string): void {
     this.toast.error(message);
   }
+
+  showInfoMensagem(message: string): void {
+    this.toast.info(message);
+  }
 }

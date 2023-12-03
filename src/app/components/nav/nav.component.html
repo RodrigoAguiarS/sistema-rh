@@ -27,6 +27,10 @@
             <i class="material-icons">supervisor_account</i>
             Responsavel Departamento
          </a>
+         <a *ngIf="roles.includes('ROLE_ADMIN_GERAL')" mat-list-item routerLink="administracao">
+            <i class="material-icons">supervisor_account</i>
+            Administração
+         </a>
          <a mat-list-item href="https://github.com/RodrigoAguiarS/helpdesk-front" target="_blank">
             <i class="material-icons">code</i>
             Github

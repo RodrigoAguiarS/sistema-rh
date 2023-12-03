@@ -5,6 +5,7 @@ import { API_CONFIG } from '../config/api.config';
 import { Credenciais } from '../models/credenciais';
 import { Observable } from 'rxjs';
 import { Email } from '../models/email';
+import { RefreshTokenResponse } from '../models/refreshTokenResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -57,5 +58,20 @@ export class AuthService {
 
   verificarUid(uid: string): Observable<string> {
     return this.http.get(`${API_CONFIG.baseUrl}/api/login-alterar/${uid}`, { responseType: 'text' });
+  }
+
+  logarComoUsuario(username: string): Observable<string> {
+    return this.http.post<string>(`${API_CONFIG.baseUrl}/api/admin/logar-como-usuario`, { username });
+  }
+
+  trocarTokenComNovoUsuario(username: string): Observable<RefreshTokenResponse> {
+    const refreshTokenRequest = {
+      currentToken: localStorage.getItem('token')
+    };
+    return this.http.post<RefreshTokenResponse>(`${API_CONFIG.baseUrl}/api/admin/refresh-token?username=${username}`, refreshTokenRequest);
+  }
+
+  executarAcaoComoUsuario(username: string): Observable<any> {
+    return this.http.get(`${API_CONFIG.baseUrl}/api/admin/impersonate/${username}`);
   }
 }

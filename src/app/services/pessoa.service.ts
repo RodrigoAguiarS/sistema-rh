@@ -34,4 +34,8 @@ export class PessoaService {
   findByIdPessoa(id: any): Observable<Usuario> {
     return this.http.get<Usuario>(`${API_CONFIG.baseUrl}/api/usuarios/${id}/dados`);
   }
+
+  alterarSenha(usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>(`${API_CONFIG.baseUrl}/api/usuarios/alterar-senha/${usuario.id}`, usuario);
+  }
 }

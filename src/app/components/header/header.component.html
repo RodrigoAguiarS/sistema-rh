@@ -27,6 +27,9 @@
     <button mat-menu-item [routerLink]="'pessoas/update/' + usuario?.id">
       Editar Usuário
     </button>
+    <button mat-menu-item [routerLink]="'pessoas/alterar-senha/' + usuario?.id">
+      Alterar Senha
+    </button>
     <button
       mat-menu-item (click)="logout()">Logout
     </button>

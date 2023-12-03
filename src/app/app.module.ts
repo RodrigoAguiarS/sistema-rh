@@ -76,6 +76,7 @@ import { CargoReadComponent } from './components/cargo/cargo-read/cargo-read.com
 import { CargoDeleteComponent } from './components/cargo/cargo-delete/cargo-delete.component';
 import { FuncionarioListComponent } from './components/funcionario/funcionario-list/funcionario-list.component';
 import { AdministracaoComponent } from './components/administracao/administracao/administracao.component';
+import { PessoaAlterarSenhaComponent } from './components/pessoa/pessoa-alterar-senha/pessoa-alterar-senha.component';
 
 @NgModule({
   declarations: [
@@ -122,6 +123,7 @@ import { AdministracaoComponent } from './components/administracao/administracao
     CargoDeleteComponent,
     FuncionarioListComponent,
     AdministracaoComponent,
+    PessoaAlterarSenhaComponent,
   ],
   imports: [
     BrowserModule,

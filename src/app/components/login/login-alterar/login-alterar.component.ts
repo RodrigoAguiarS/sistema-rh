@@ -15,10 +15,7 @@ export class LoginAlterarComponent implements OnInit {
   recuperarForm!: FormGroup;
   uidValido?: boolean;
 
-  recuperarSenha: RecuperarSenha = {
-    uid: '',
-    novaSenha: ''
-  };
+  recuperarSenha: RecuperarSenha;
 
   constructor(
     private mensagemService: MensagemService,
@@ -29,6 +26,7 @@ export class LoginAlterarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.recuperarSenha = new RecuperarSenha();
     const uid = this.route.snapshot.paramMap.get('uid');
     if (uid !== null) {
       this.recuperarSenha.uid = uid;
@@ -47,7 +45,6 @@ export class LoginAlterarComponent implements OnInit {
   verificarUid() {
     this.authService.verificarUid(this.recuperarSenha.uid).subscribe({
       next: (response) => {
-        console.log('Resposta do verificarUid:', response);
         if (response) {
           this.uidValido = true;
           this.recuperarSenha.uid = response; // Atribuir o valor do uid retornado à variável uid do componente
@@ -67,15 +64,16 @@ export class LoginAlterarComponent implements OnInit {
       this.mensagemService.showErrorMensagem('Por favor, preencha todos os campos corretamente.');
       return;
     }
-    this.authService.atualizarSenha(this.recuperarSenha.uid, this.recuperarSenha.novaSenha).subscribe(
-      (response) => {
+  
+    this.authService.atualizarSenha(this.recuperarSenha.uid, this.recuperarSenha.novaSenha).subscribe({
+      next: () => {
         this.mensagemService.showSuccessoMensagem('Senha atualizada com sucesso.');
         this.router.navigate(['login']);
       },
-      (error) => {
+      error: () => {
         this.mensagemService.showErrorMensagem('Erro ao atualizar a senha. Por favor, tente novamente.');
       }
-    );
+    });
   }
 
   confirmValidator = (control: FormGroup): { [s: string]: boolean } => {

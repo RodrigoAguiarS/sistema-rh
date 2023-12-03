@@ -38,6 +38,9 @@ import { CargoReadComponent } from './components/cargo/cargo-read/cargo-read.com
 import { CargoDeleteComponent } from './components/cargo/cargo-delete/cargo-delete.component';
 import { FuncionarioListComponent } from './components/funcionario/funcionario-list/funcionario-list.component'; 
 import { AdministracaoComponent } from './components/administracao/administracao/administracao.component'; 
+import { PessoaAlterarSenhaComponent } from './components/pessoa/pessoa-alterar-senha/pessoa-alterar-senha.component';
+
+
 const routes: Routes = [
   { path : 'login', component: LoginComponent },
     { path : 'login-recuperar', component: LoginRecuperarComponent },
@@ -51,6 +54,7 @@ const routes: Routes = [
         { path: 'pessoas/create',      component:   PessoaCreateComponent},
         { path: 'pessoas/update/:id',      component:  PessoaUpdateComponent},
         { path: 'pessoas/delete/:id',      component:  PessoaDeleteComponent},
+        { path: 'pessoas/alterar-senha/:id',      component:  PessoaAlterarSenhaComponent},
 
         { path: 'funcionarios',component:  FuncionarioListComponent},
 

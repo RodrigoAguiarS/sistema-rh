@@ -56,10 +56,6 @@ export class FuncionarioListComponent implements OnInit {
       const departamentoFuncionario = (data.cargo.departamento.nome || "").toLowerCase();
       const gestorFuncionario = (data.responsavelAtual?.nomeFuncionarioResponsavel || "").toLowerCase();
 
-      console.log("Gestor Funcionário:", gestorFuncionario);
-      console.log("DATA ENTRADA:", dataEntradaFuncionario);
-      console.log("Filter Value:", filterValue);
-
       return (
         nomeFuncionario.includes(filterValue) ||
         cargoFuncionario.includes(filterValue) ||

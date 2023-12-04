@@ -1,8 +1,8 @@
 <mat-toolbar>
   <!-- E-mail do usuário -->
   <span class="user-info">
-    <mat-icon>email</mat-icon>
-    {{ usuario?.email }}
+    <mat-icon>work</mat-icon>
+    {{ usuario.cargo.nome }}
   </span>
 
   <span *ngIf="roles.includes('ROLE_ADMIN_GERAL')" class="user-info">
@@ -16,7 +16,7 @@
   <!-- Nome e Perfis do usuário -->
   <span class="user-info">
     <mat-icon>account_circle</mat-icon>
-    {{ usuario?.pessoa?.nome }}
+    {{ usuario.pessoa.nome }}
   </span>
 
   <!-- Botão de dropdown -->
@@ -24,10 +24,10 @@
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item [routerLink]="'pessoas/update/' + usuario?.id">
+    <button mat-menu-item [routerLink]="'pessoas/update/' + usuario.id">
       Editar Usuário
     </button>
-    <button mat-menu-item [routerLink]="'pessoas/alterar-senha/' + usuario?.id">
+    <button mat-menu-item [routerLink]="'pessoas/alterar-senha/' + usuario.id">
       Alterar Senha
     </button>
     <button

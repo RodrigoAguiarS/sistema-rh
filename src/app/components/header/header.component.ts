@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
+import { Cargo } from 'src/app/models/cargo';
+import { Pessoa } from 'src/app/models/pessoa';
 import { Usuario } from 'src/app/models/usuario';
 import { AuthService } from 'src/app/services/auth.service';
 import { MensagemService } from 'src/app/services/mensagem.service';
@@ -28,7 +30,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.carregarDadosIniciais();
-    console.log(this.carregarDadosIniciais);
+    this.usuario = new Usuario();
+    this.usuario.cargo = new Cargo();
+    this.usuario.pessoa = new Pessoa();
     this.userChangeService.userChanged$.subscribe(() => {
       this.carregarDadosIniciais();
     });

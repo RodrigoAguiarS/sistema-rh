@@ -49,7 +49,7 @@
 
             <ng-container matColumnDef="gestor">
                 <th mat-header-cell *matHeaderCellDef> Gestor </th>
-                <td mat-cell *matCellDef="let element"> {{ element.responsavelAtual.nomeFuncionarioResponsavel }} </td>
+                <td mat-cell *matCellDef="let element"> {{ element.responsavelAtual?.nomeFuncionarioResponsavel || 'N/A' }} </td>
             </ng-container>
 
             <!-- Ações -->

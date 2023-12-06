@@ -39,7 +39,7 @@ import { CargoDeleteComponent } from './components/cargo/cargo-delete/cargo-dele
 import { FuncionarioListComponent } from './components/funcionario/funcionario-list/funcionario-list.component'; 
 import { AdministracaoComponent } from './components/administracao/administracao/administracao.component'; 
 import { PessoaAlterarSenhaComponent } from './components/pessoa/pessoa-alterar-senha/pessoa-alterar-senha.component';
-
+import { RegistroPontoCreateComponent } from './components/registro/registro-ponto-create/registro-ponto-create.component';
 
 const routes: Routes = [
   { path : 'login', component: LoginComponent },
@@ -59,6 +59,8 @@ const routes: Routes = [
         { path: 'funcionarios',component:  FuncionarioListComponent},
 
         { path: 'administracao',component:  AdministracaoComponent},
+
+        { path: 'registros',component:  RegistroPontoCreateComponent},
 
         { path: 'departamentos',component:  DepartamentoListComponent},
         { path: 'departamentos/create',component:  DepartamentoCreateComponent},

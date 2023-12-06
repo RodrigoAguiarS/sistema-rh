@@ -5,10 +5,20 @@
     {{ usuario.cargo.nome }}
   </span>
 
-  <span *ngIf="roles.includes('ROLE_ADMIN_GERAL')" class="user-info">
-    <mat-icon>admin_panel_settings</mat-icon>
-    <mat-label>Adminstrador do Sistema</mat-label>
+  <span class="user-info">
+    {{ usuario.perfis }}
   </span>
+
+  <div class="user-actions">
+    <mat-form-field *ngIf="roles.includes('ROLE_ADMIN_GERAL') && !usuarioTrocado">
+      <input matInput placeholder="Login do Usuário" [(ngModel)]="loginComoUsuario">
+    </mat-form-field>
+
+    <button *ngIf="roles.includes('ROLE_ADMIN_GERAL')" [disabled]="!loginComoUsuario" mat-raised-button
+      (click)="toggleLogarDeslogar()">
+      {{ usuarioTrocado ? 'Voltar ao Usuário' : 'Logar' }}
+    </button>
+  </div>
 
   <!-- Espaçador flexível -->
   <span class="example-spacer"></span>
@@ -30,8 +40,7 @@
     <button mat-menu-item [routerLink]="'pessoas/alterar-senha/' + usuario.id">
       Alterar Senha
     </button>
-    <button
-      mat-menu-item (click)="logout()">Logout
+    <button mat-menu-item (click)="logout()">Logout
     </button>
   </mat-menu>
 

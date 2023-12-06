@@ -56,25 +56,27 @@ export class AdministracaoComponent implements OnInit {
   logarComoUsuario(): void {
     if (this.loginComoUsuario) {
       this.authService.executarAcaoComoUsuario(this.loginComoUsuario).subscribe({
-          next: (response) => {
-            this.mensagemService.showSuccessoMensagem(response.message);
-            this.usuarioTrocado = true;
-            this.authService.trocarTokenComNovoUsuario(this.loginComoUsuario).subscribe({
-                next: (refreshTokenResponse: RefreshTokenResponse) => {
-                  localStorage.setItem("token", refreshTokenResponse.newToken);
-                  this.atualizarInformacoesUsuario(refreshTokenResponse.newToken);
-                  this.router.navigate(["home"]);
-                },
-                error: (error) => {
-                  this.mensagemService.showErrorMensagem(error.error.message);
-                },
-              });
-          },
-          error: (error) => {
-            this.mensagemService.showErrorMensagem(error.error.message);
-            this.loginComoUsuario = "";
-          },
-        });
+        next: (response) => {
+          this.mensagemService.showSuccessoMensagem(response.message);
+          this.usuarioTrocado = true;
+          this.authService
+            .trocarTokenComNovoUsuario(this.loginComoUsuario)
+            .subscribe({
+              next: (refreshTokenResponse: RefreshTokenResponse) => {
+                localStorage.setItem("token", refreshTokenResponse.newToken);
+                this.atualizarInformacoesUsuario(refreshTokenResponse.newToken);
+                this.router.navigate(['home']);
+              },
+              error: (error) => {
+                this.mensagemService.showErrorMensagem(error.error.message);
+              },
+            });
+        },
+        error: (error) => {
+          this.mensagemService.showErrorMensagem(error.error.message);
+          this.loginComoUsuario = "";
+        },
+      });
     }
   }
 

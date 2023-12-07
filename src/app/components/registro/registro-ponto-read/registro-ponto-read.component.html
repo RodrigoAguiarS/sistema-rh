@@ -1,0 +1,41 @@
+<div class="container mat-elevation-z8">
+    <h1 class="full-width">Leitura do Registro</h1>
+    <img class="full-width" src="assets/img/registro-create.svg" alt="Chamado image">
+
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Data de Registro</mat-label>
+
+        <input [disabled]="true" [(ngModel)]="registro.dataRegistro" name="datadataAtual" matInput
+            [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="row-container">
+        
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Hora de Entrada</mat-label>
+            <input readonly [(ngModel)]="registro.hora"
+                name="responsavelAtual" matInput placeholder="Responsável atual">
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Hora de Saida</mat-label>
+            <input readonly [(ngModel)]="registro.horaSaida"
+                name="responsavelAtual" matInput placeholder="Responsável atual">
+        </mat-form-field>
+
+    </div>
+
+    <form class="descricao">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Observacões</mat-label>
+            <textarea readonly [(ngModel)]="registro.observacoes" name="observacoes" class="descricao"
+                matInput></textarea>
+        </mat-form-field>
+    </form>
+
+    <!-- botões -->
+    <button routerLink="../../" class="full-width mat-elevation-z4" mat-stroked-button color="warn">Retornar</button>
+
+</div>

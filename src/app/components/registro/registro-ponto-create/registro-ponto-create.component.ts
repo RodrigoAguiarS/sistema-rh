@@ -28,7 +28,7 @@ export class RegistroPontoCreateComponent implements OnInit {
     this.registro = new RegistroPonto();
   
     setInterval(() => {
-      this.registro.dataAtual = new Date();
+      this.registro.dataRegistro = new Date();
       this.registro.hora = new Date();
     }, 1000);
   
@@ -47,7 +47,8 @@ export class RegistroPontoCreateComponent implements OnInit {
       observacoes: this.registro.observacoes,
       pontoRegistrado: this.registro.pontoRegistrado,
       hora: this.registro.hora,
-      dataAtual: this.registro.dataAtual
+      dataRegistro: this.registro.dataRegistro,
+      horaSaida: this.registro.horaSaida
     }
   
     if (!this.registro.pontoRegistrado) {

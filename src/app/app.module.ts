@@ -78,6 +78,8 @@ import { FuncionarioListComponent } from './components/funcionario/funcionario-l
 import { AdministracaoComponent } from './components/administracao/administracao/administracao.component';
 import { PessoaAlterarSenhaComponent } from './components/pessoa/pessoa-alterar-senha/pessoa-alterar-senha.component';
 import { RegistroPontoCreateComponent } from './components/registro/registro-ponto-create/registro-ponto-create.component';
+import { RegistroPontoListComponent } from './components/registro/registro-ponto-list/registro-ponto-list.component';
+import { RegistroPontoReadComponent } from './components/registro/registro-ponto-read/registro-ponto-read.component';
 
 @NgModule({
   declarations: [
@@ -126,6 +128,8 @@ import { RegistroPontoCreateComponent } from './components/registro/registro-pon
     AdministracaoComponent,
     PessoaAlterarSenhaComponent,
     RegistroPontoCreateComponent,
+    RegistroPontoListComponent,
+    RegistroPontoReadComponent
   ],
   imports: [
     BrowserModule,

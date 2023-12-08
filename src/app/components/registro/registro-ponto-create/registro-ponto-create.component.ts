@@ -12,7 +12,8 @@ import { MensagemService } from 'src/app/services/mensagem.service';
 })
 export class RegistroPontoCreateComponent implements OnInit {
 
-  listarRegistros: boolean = false;
+  hora: Date = new Date();
+  data: Date = new Date();
 
   registro: RegistroPonto;
 
@@ -28,8 +29,8 @@ export class RegistroPontoCreateComponent implements OnInit {
     this.registro = new RegistroPonto();
   
     setInterval(() => {
-      this.registro.dataRegistro = new Date();
-      this.registro.hora = new Date();
+      this.data = new Date();
+      this.hora = new Date();
     }, 1000);
   
     this.registroPontoService.consultarUltimoPonto().subscribe({
@@ -44,16 +45,16 @@ export class RegistroPontoCreateComponent implements OnInit {
 
   registrarPonto() {
     const registro: RegistroPonto = {
-      observacoes: this.registro.observacoes,
+      observacoes: this.observacoes.value,
       pontoRegistrado: this.registro.pontoRegistrado,
-      hora: this.registro.hora,
+      horaEntrada: this.registro.horaEntrada,
       dataRegistro: this.registro.dataRegistro,
       horaSaida: this.registro.horaSaida
     }
   
     if (!this.registro.pontoRegistrado) {
       this.registroPontoService.registrarPonto(registro).subscribe({
-        next: (ponto: RegistroPonto) => {
+        next: () => {
           this.mensagemService.showSuccessoMensagem('Entrada registrada com sucesso:');
           this.router.navigate(["home"]);
           this.registro.pontoRegistrado = true;
@@ -64,7 +65,7 @@ export class RegistroPontoCreateComponent implements OnInit {
       });
     } else {
       this.registroPontoService.registrarPonto(registro).subscribe({
-        next: (ponto: RegistroPonto) => {
+        next: () => {
           this.mensagemService.showSuccessoMensagem('Saída registrada com sucesso:');
           this.router.navigate(["home"]);
           this.registro.pontoRegistrado = false;

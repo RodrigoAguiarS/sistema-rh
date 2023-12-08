@@ -2,7 +2,7 @@ export class RegistroPonto {
   id?: any;
   observacoes: string;
   pontoRegistrado: boolean;
-  hora: Date;
+  horaEntrada: Date;
   horaSaida: Date;
   dataRegistro: Date;
 }

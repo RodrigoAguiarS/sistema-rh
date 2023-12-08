@@ -39,7 +39,7 @@
     opacity: .8;
   }
   
-  .clock {
+  .relogio {
     font-size: 2rem;
     margin-top: 2rem;
     text-align: center;
@@ -51,7 +51,7 @@
     position: relative;
   }
   
-  .clock::before {
+  .relogio::before {
     content: "";
     width: 0;
     height: 0;
@@ -63,11 +63,11 @@
     left: calc(50% - 20px);
   }
   
-  .clock p {
+  .relogio p {
     font-size: 1.2rem;
     margin-top: 1rem;
   }
-  .clock img {
+  .relogio img {
     height: 4rem;
     float: left;
     margin-right: 1rem;

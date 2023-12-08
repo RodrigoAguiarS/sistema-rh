@@ -4,9 +4,9 @@
         <mat-card-content>
             <img src="assets/img/registro-create.svg" alt="Imagem do lado do relógio">
 
-            <div class="clock">
-                {{ registro.hora | date: 'HH:mm:ss' }}
-                <p>{{ registro.dataRegistro | date: 'dd \'de\' MMMM \'de\' yyyy' }}</p>
+            <div class="relogio">
+                {{ hora | date: 'HH:mm:ss' }}
+                <p>{{ data | date: 'dd \'de\' MMMM \'de\' yyyy' }}</p>
             </div>
 
             <mat-form-field class="fullWidth" appearance="outline">

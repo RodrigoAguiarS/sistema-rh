@@ -1,5 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,7 +31,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 
 // Componentes do projeto
@@ -81,6 +84,7 @@ import { RegistroPontoCreateComponent } from './components/registro/registro-pon
 import { RegistroPontoListComponent } from './components/registro/registro-ponto-list/registro-ponto-list.component';
 import { RegistroPontoReadComponent } from './components/registro/registro-ponto-read/registro-ponto-read.component';
 
+registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent,
@@ -166,7 +170,7 @@ import { RegistroPontoReadComponent } from './components/registro/registro-ponto
     }),
     NgxMaskModule.forRoot()
   ],
-  providers: [AuthInterceptorProvider, { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' } ],
+  providers: [AuthInterceptorProvider, { provide: LOCALE_ID, useValue: 'pt-BR' } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

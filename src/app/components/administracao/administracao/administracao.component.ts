@@ -19,9 +19,8 @@ export class AdministracaoComponent implements OnInit {
   usuarioLogado: Usuario;
   usuarioTrocado: boolean = false;
   roles: string[] = [];
-  loginComoUsuario: string = "";
-
-  login: FormControl = new FormControl(null, Validators.email);
+  
+  loginComoUsuario: FormControl = new FormControl(null, Validators.email);
 
   constructor(
     public authService: AuthService,
@@ -55,12 +54,12 @@ export class AdministracaoComponent implements OnInit {
 
   logarComoUsuario(): void {
     if (this.loginComoUsuario) {
-      this.authService.executarAcaoComoUsuario(this.loginComoUsuario).subscribe({
+      this.authService.executarAcaoComoUsuario(this.loginComoUsuario.value).subscribe({
         next: (response) => {
           this.mensagemService.showSuccessoMensagem(response.message);
           this.usuarioTrocado = true;
           this.authService
-            .trocarTokenComNovoUsuario(this.loginComoUsuario)
+            .trocarTokenComNovoUsuario(this.loginComoUsuario.value)
             .subscribe({
               next: (refreshTokenResponse: RefreshTokenResponse) => {
                 localStorage.setItem("token", refreshTokenResponse.newToken);
@@ -74,7 +73,7 @@ export class AdministracaoComponent implements OnInit {
         },
         error: (error) => {
           this.mensagemService.showErrorMensagem(error.error.message);
-          this.loginComoUsuario = "";
+          this.loginComoUsuario.reset;
         },
       });
     }
@@ -97,7 +96,7 @@ export class AdministracaoComponent implements OnInit {
   // validacao de campos
   validaCampos(): boolean {
     return (
-      this.login.valid
+      this.loginComoUsuario.valid
     );
   }
 }

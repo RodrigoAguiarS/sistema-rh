@@ -14,6 +14,8 @@ export class DepartamentoListComponent implements OnInit {
   ELEMENT_DATA: Departamento[] = []
   FILTERED_DATA: Departamento[] = []
 
+  
+
   displayedColumns: string[] = ['id', 'nome', 'descricao', 'dataCriacao', 'acoes'];
   dataSource = new MatTableDataSource<Departamento>(this.ELEMENT_DATA);
 
@@ -33,6 +35,10 @@ export class DepartamentoListComponent implements OnInit {
       this.dataSource = new MatTableDataSource<Departamento>(resposta);
       this.dataSource.paginator = this.paginator;
     })
+  }
+
+  linhaImpar(index: number): boolean {
+    return index % 2 !== 0;
   }
 
   applyFilter(event: Event) {

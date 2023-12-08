@@ -18,4 +18,12 @@ export class RegistroPontoService {
   consultarUltimoPonto(): Observable<boolean> {
     return this.http.get<boolean>(`${API_CONFIG.baseUrl}/api/registro-ponto/is-entrada`);
   }
+
+  findAll(): Observable<RegistroPonto[]> {
+    return this.http.get<RegistroPonto[]>(`${API_CONFIG.baseUrl}/api/registro-ponto/registros`);
+  }
+
+  findById(id: any): Observable<RegistroPonto> {
+    return this.http.get<RegistroPonto>(`${API_CONFIG.baseUrl}/api/registro-ponto/${id}`);
+  }
 }

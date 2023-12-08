@@ -6,7 +6,7 @@
  table {
     width: 100%;
  }
- 
+
  mat-form-field {
     width: 100%;
  }
@@ -21,15 +21,10 @@
     margin-bottom: 2rem;
  }
  
- .edit {
-    color: rgb(0, 153, 255);
- }
- 
- .delete {
-    color: red;
- }
-
-.mat-row.odd-row {
-  background-color: #e0e0e0; /* Substitua pela cor desejada */
+.edit {
+   color: rgb(0, 153, 255);
 }
- 
+
+.delete {
+   color: red;
+}

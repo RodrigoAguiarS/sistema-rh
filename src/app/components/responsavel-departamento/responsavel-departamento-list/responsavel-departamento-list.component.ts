@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ResponsavelDepartamento } from 'src/app/models/responsavelDepartamento';
 import { ResponsavelDepartamentoService } from 'src/app/services/responsavel-departamento.service';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-reponsavel-departamento-list',
@@ -19,7 +20,8 @@ export class ResponsavelDepartamentoListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
-    private reponsavelDepartamentoservice: ResponsavelDepartamentoService
+    private reponsavelDepartamentoservice: ResponsavelDepartamentoService,
+    private utilService: UtilService
   ) { }
 
   ngOnInit(): void {
@@ -37,5 +39,9 @@ export class ResponsavelDepartamentoListComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  getLinhaImpar(index: number): boolean {
+    return this.utilService.linhaImpar(index);
   }
 }

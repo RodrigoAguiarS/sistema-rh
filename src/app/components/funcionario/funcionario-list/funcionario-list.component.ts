@@ -3,6 +3,7 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
 import { Funcionario } from "src/app/models/funcionario";
 import { FuncionarioService } from "src/app/services/funcionario.service";
+import { UtilService } from "src/app/services/util.service";
 
 @Component({
   selector: "app-funcionario-list",
@@ -27,7 +28,8 @@ export class FuncionarioListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private funcionarioService: FuncionarioService) {}
+  constructor(private funcionarioService: FuncionarioService,
+    private utilService: UtilService) {}
 
   ngOnInit(): void {
     this.findAll();
@@ -67,5 +69,8 @@ export class FuncionarioListComponent implements OnInit {
     };
 
     this.dataSource.filter = filterValue;
+  }
+  getLinhaImpar(index: number): boolean {
+    return this.utilService.linhaImpar(index);
   }
 }

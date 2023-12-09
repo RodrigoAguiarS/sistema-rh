@@ -28,3 +28,7 @@
  .delete {
     color: red;
  }
+
+ .mat-row.odd-row {
+   background-color: #e0e0e0; /* Substitua pela cor desejada */
+ }

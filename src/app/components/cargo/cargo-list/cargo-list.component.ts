@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Cargo } from 'src/app/models/cargo';
 import { CargoService } from 'src/app/services/cargo.service';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-cargo-list',
@@ -20,7 +21,8 @@ export class CargoListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
-    private cargoService: CargoService
+    private cargoService: CargoService,
+    private utilService: UtilService
   ) { }
 
   ngOnInit(): void {
@@ -38,5 +40,9 @@ export class CargoListComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  getLinhaImpar(index: number): boolean {
+    return this.utilService.linhaImpar(index);
   }
 }

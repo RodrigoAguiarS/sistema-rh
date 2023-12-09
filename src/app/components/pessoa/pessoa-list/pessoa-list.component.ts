@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Usuario } from 'src/app/models/usuario';
 import { PessoaService } from 'src/app/services/pessoa.service';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-pessoa-list',
@@ -34,6 +35,7 @@ export class PessoaListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private pessoaService: PessoaService,
+    private utilService: UtilService
     ) { }
 
   ngOnInit(): void {
@@ -79,5 +81,9 @@ export class PessoaListComponent implements OnInit {
     };
   
     this.dataSource.filter = filterValue;
+  }
+
+  getLinhaImpar(index: number): boolean {
+    return this.utilService.linhaImpar(index);
   }
 }

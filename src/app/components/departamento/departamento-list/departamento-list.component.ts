@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Departamento } from 'src/app/models/departamento';
 import { DepartamentoService } from 'src/app/services/departamento.service';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-departamento-list',
@@ -22,7 +23,8 @@ export class DepartamentoListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
-    private departamentoService: DepartamentoService
+    private departamentoService: DepartamentoService,
+    private utilService: UtilService
   ) { }
 
   ngOnInit(): void {
@@ -37,8 +39,8 @@ export class DepartamentoListComponent implements OnInit {
     })
   }
 
-  linhaImpar(index: number): boolean {
-    return index % 2 !== 0;
+  getLinhaImpar(index: number): boolean {
+    return this.utilService.linhaImpar(index);
   }
 
   applyFilter(event: Event) {

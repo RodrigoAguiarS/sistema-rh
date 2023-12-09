@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { RegistroPonto } from 'src/app/models/registroPonto';
 import { RegistroPontoService } from 'src/app/services/registro-ponto.service';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-registro-ponto-list',
@@ -19,7 +20,8 @@ export class RegistroPontoListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
-    private service: RegistroPontoService
+    private service: RegistroPontoService,
+    private utilService: UtilService
   ) { }
 
   ngOnInit(): void {
@@ -38,5 +40,9 @@ export class RegistroPontoListComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  getLinhaImpar(index: number): boolean {
+    return this.utilService.linhaImpar(index);
   }
 }

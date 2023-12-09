@@ -58,7 +58,7 @@
          </ng-container>
 
          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+         <tr mat-row [class.odd-row]="getLinhaImpar(i)" *matRowDef="let row; columns: displayedColumns; let i = index;"></tr>
       </table>
 
       <mat-paginator [pageSizeOptions]="[5, 2, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>

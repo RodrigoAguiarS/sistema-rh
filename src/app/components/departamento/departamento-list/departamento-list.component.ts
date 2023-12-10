@@ -15,9 +15,7 @@ export class DepartamentoListComponent implements OnInit {
   ELEMENT_DATA: Departamento[] = []
   FILTERED_DATA: Departamento[] = []
 
-  
-
-  displayedColumns: string[] = ['id', 'nome', 'descricao', 'dataCriacao', 'acoes'];
+  displayedColumns: string[] = ['id', 'nome', 'descricao', 'dataCriacao', 'empresa', 'acoes'];
   dataSource = new MatTableDataSource<Departamento>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -34,6 +32,7 @@ export class DepartamentoListComponent implements OnInit {
   findAll(): void {
     this.departamentoService.findAll().subscribe(resposta => {
       this.ELEMENT_DATA = resposta;
+      console.log(resposta);
       this.dataSource = new MatTableDataSource<Departamento>(resposta);
       this.dataSource.paginator = this.paginator;
     })
@@ -43,8 +42,22 @@ export class DepartamentoListComponent implements OnInit {
     return this.utilService.linhaImpar(index);
   }
 
+  // metodo para filtrar todas as colunas da tabela.
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+  
+    this.dataSource.filterPredicate = (data: Departamento) => {
+      const nomeDepartamento = data.nome?.toLowerCase()|| '';
+      const escricaoDepartamento = data.descricao?.toLowerCase()|| '';
+      const empresaDepartamento = data.empresa.nome?.toLowerCase()|| '';
+
+      return (
+        nomeDepartamento.includes(filterValue) ||
+        escricaoDepartamento.includes(filterValue) ||
+        empresaDepartamento.includes(filterValue)
+      );
+    };
+  
+    this.dataSource.filter = filterValue;
   }
 }

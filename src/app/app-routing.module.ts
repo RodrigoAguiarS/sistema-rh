@@ -42,6 +42,21 @@ import { PessoaAlterarSenhaComponent } from "./components/pessoa/pessoa-alterar-
 import { RegistroPontoCreateComponent } from "./components/registro/registro-ponto-create/registro-ponto-create.component";
 import { RegistroPontoListComponent } from "./components/registro/registro-ponto-list/registro-ponto-list.component";
 import { RegistroPontoReadComponent } from "./components/registro/registro-ponto-read/registro-ponto-read.component";
+import { EmpresaCreateComponent } from './components/empresa/empresa-create/empresa-create.component';
+import { EmpresaListComponent } from './components/empresa/empresa-list/empresa-list.component';
+import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
+import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empresa-delete.component';
+
+
+
+
+
+
+
+
+
+
+
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -83,6 +98,11 @@ const routes: Routes = [
       },
       { path: "departamentos/read/:id", component: DepartamentoReadComponent },
 
+      { path: "empresas", component: EmpresaListComponent },
+      { path: "empresas/create", component: EmpresaCreateComponent },
+      { path: "empresas/update/:id", component: EmpresaUpdateComponent },
+      { path: "empresas/delete/:id", component: EmpresaDeleteComponent },
+      
       { path: "cargos", component: CargoListComponent },
       { path: "cargos/create", component: CargoCreateComponent },
       { path: "cargos/update/:id", component: CargoUpdateComponent },

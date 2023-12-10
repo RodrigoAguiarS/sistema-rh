@@ -1,0 +1,92 @@
+<div class="container mat-elevation-z8">
+    <form class="form" [formGroup]="empresaForm">
+
+        <h1 class="full-width">Deletar Empresa</h1>
+        <img class="full-width" src="assets/img/empresa-create.svg" alt="Sistema RH">
+
+        <h3 class="fullWidth">Dados da Empresa</h3>
+        <div class="row-container">
+            <!-- nome -->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Nome da Empresa</mat-label>
+                <input name="nome" formControlName="nome" required matInput placeholder="Ex. nome da empresa...">
+                <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+
+            <!-- CNPJ -->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>CNPJ</mat-label>
+                <input name="cnpj" formControlName="cnpj" required matInput placeholder="Ex. 00.000.000/0001-00">
+                <mat-icon matSuffix>business</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="row-container">
+            <!-- Telefone -->
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Telefone</mat-label>
+                <input name="telefone" formControlName="telefone" required matInput placeholder="Ex. (00) 00000-0000"
+                    mask="(00) 00000-0000">
+                <mat-icon matSuffix>phone</mat-icon>
+            </mat-form-field>
+
+        </div>
+        <h3 class="fullWidth">Endereço da Empresa</h3>
+        <!-- Endereço -->
+        <div formGroupName="endereco">
+
+            <div class="row-container">
+                <!-- CEP -->
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>CEP</mat-label>
+                    <input name="cep" formControlName="cep" required matInput placeholder="Ex. 00000-000"
+                        mask="00000-000">
+                    <mat-icon matSuffix>location_on</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Número</mat-label>
+                    <input name="telefone" formControlName="numero" required matInput placeholder="Ex. 000">
+                    <mat-icon matSuffix>location_on</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="row-container">
+                <!-- Rua -->
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Rua</mat-label>
+                    <input name="rua" formControlName="rua" required matInput placeholder="Ex. Nome da Rua">
+                    <mat-icon matSuffix>location_on</mat-icon>
+                </mat-form-field>
+
+                <!-- Bairro -->
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Bairro</mat-label>
+                    <input name="bairro" formControlName="bairro" required matInput placeholder="Ex. Nome do Bairro">
+                    <mat-icon matSuffix>location_on</mat-icon>
+                </mat-form-field>
+            </div>
+
+
+            <div class="row-container">
+
+                <!-- Cidade -->
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Cidade</mat-label>
+                    <input name="cidade" formControlName="cidade" required matInput placeholder="Ex. Nome da Cidade">
+                    <mat-icon matSuffix>location_on</mat-icon>
+                </mat-form-field>
+
+                <!-- Estado -->
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Estado</mat-label>
+                    <input name="estado" formControlName="estado" required matInput placeholder="Ex. Nome da estado">
+                    <mat-icon matSuffix>location_on</mat-icon>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <button (click)="delete()" class="full-width mat-elevation-z4" mat-flat-button
+            color="primary">Deletar</button>
+        <button routerLink="../../" class="full-width mat-elevation-z4" mat-stroked-button color="warn">Cancelar</button>
+    </form>
+</div>
+

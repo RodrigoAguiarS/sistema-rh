@@ -1,8 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Departamento } from "src/app/models/departamento";
+import { Empresa } from "src/app/models/empresa";
 import { DepartamentoService } from "src/app/services/departamento.service";
+import { EmpresaService } from "src/app/services/empresa.service";
 import { MensagemService } from "src/app/services/mensagem.service";
 
 @Component({
@@ -11,27 +13,28 @@ import { MensagemService } from "src/app/services/mensagem.service";
   styleUrls: ["./departamento-create.component.css"],
 })
 export class DepartamentoCreateComponent implements OnInit {
+
   departamento: Departamento;
+  empresas: Empresa[] = [];
+  departamentoForm!: FormGroup;
 
   constructor(
     private mensagemService: MensagemService,
     private departamentoService: DepartamentoService,
+    private empresaService: EmpresaService,
+    private formBuilder: FormBuilder,
     private router: Router
   ) {}
 
-  // Definição dos formulários
-  nome: FormControl = new FormControl(null, Validators.minLength(3));
-  descricao: FormControl = new FormControl(null, Validators.minLength(3));
-
   ngOnInit(): void {
     this.departamento = new Departamento();
+    this.initForm();
+    this.findAllEmpresas();
   }
 
   create(): void {
-    // Preenchimento dos dados do departamento
-    this.departamento.nome = this.nome.value;
-    this.departamento.descricao = this.descricao.value;
 
+    this.departamento = this.departamentoForm.value;
     // Chamada do serviço para criar o usuário
     this.departamentoService.create(this.departamento).subscribe({
       next: (resposta) => {
@@ -52,8 +55,23 @@ export class DepartamentoCreateComponent implements OnInit {
     });
   }
 
-  // validacao de campos
-  validaCampos(): boolean {
-    return this.nome.valid && this.descricao.valid
+  initForm(): void {
+    this.departamentoForm = this.formBuilder.group({
+      nome: ["", Validators.required],
+      descricao: ["",Validators.required],
+      empresa: ["",Validators.required],
+    });
+  }
+
+  findAllEmpresas(): void {
+    this.empresaService.findAll().subscribe((resposta) => {
+      this.empresas = resposta;
+    });
+  }
+
+  compareEmpresas(empresa1: any, empresa2: any): boolean {
+    return empresa1 && empresa2
+      ? empresa1.id === empresa2.id
+      : empresa1 === empresa2;
   }
 }

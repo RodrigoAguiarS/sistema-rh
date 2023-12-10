@@ -30,3 +30,17 @@
     margin-top: 3rem;
     opacity: .5;
  }
+
+ .row-container {
+   display: flex;
+   justify-content: space-between;
+}
+
+.row-container mat-form-field {
+   width: 49%;
+}
+
+.texto {
+   min-height: 6rem;
+   max-height: 10rem;
+}

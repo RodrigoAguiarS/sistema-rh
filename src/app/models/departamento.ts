@@ -1,4 +1,5 @@
 import { DetalhesResponsavel } from "./detalhesResponsavel";
+import { Empresa } from "./empresa";
 
 export class Departamento {
     id?:     any;
@@ -6,4 +7,5 @@ export class Departamento {
     descricao: string;
     dataCriacao: Date;
     responsavelAtual: DetalhesResponsavel;
+    empresa: Empresa;
   }

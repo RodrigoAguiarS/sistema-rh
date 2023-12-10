@@ -1,8 +1,5 @@
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { registerLocaleData } from '@angular/common';
-import localePt from '@angular/common/locales/pt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,7 +28,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 
 // Componentes do projeto
@@ -83,8 +80,11 @@ import { PessoaAlterarSenhaComponent } from './components/pessoa/pessoa-alterar-
 import { RegistroPontoCreateComponent } from './components/registro/registro-ponto-create/registro-ponto-create.component';
 import { RegistroPontoListComponent } from './components/registro/registro-ponto-list/registro-ponto-list.component';
 import { RegistroPontoReadComponent } from './components/registro/registro-ponto-read/registro-ponto-read.component';
+import { EmpresaCreateComponent } from './components/empresa/empresa-create/empresa-create.component';
+import { EmpresaListComponent } from './components/empresa/empresa-list/empresa-list.component';
+import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
+import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empresa-delete.component';
 
-registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent,
@@ -133,7 +133,11 @@ registerLocaleData(localePt);
     PessoaAlterarSenhaComponent,
     RegistroPontoCreateComponent,
     RegistroPontoListComponent,
-    RegistroPontoReadComponent
+    RegistroPontoReadComponent,
+    EmpresaCreateComponent,
+    EmpresaListComponent,
+    EmpresaUpdateComponent,
+    EmpresaDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -170,7 +174,7 @@ registerLocaleData(localePt);
     }),
     NgxMaskModule.forRoot()
   ],
-  providers: [AuthInterceptorProvider, { provide: LOCALE_ID, useValue: 'pt-BR' } ],
+  providers: [AuthInterceptorProvider, { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

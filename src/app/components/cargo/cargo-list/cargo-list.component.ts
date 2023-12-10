@@ -37,9 +37,23 @@ export class CargoListComponent implements OnInit {
     })
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+   // metodo para filtrar todas as colunas da tabela.
+   applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+  
+    this.dataSource.filterPredicate = (data: Cargo) => {
+      const nomeCargo = data.nome?.toLowerCase()|| '';
+      const salarioBaseCargo = data.salarioBase?.toString().toLowerCase()|| '';
+      const departamentoCargo = data.departamento.nome.toLowerCase()|| '';
+
+      return (
+        nomeCargo.includes(filterValue) ||
+        salarioBaseCargo.includes(filterValue) ||
+        departamentoCargo.includes(filterValue)
+      );
+    };
+  
+    this.dataSource.filter = filterValue;
   }
 
   getLinhaImpar(index: number): boolean {

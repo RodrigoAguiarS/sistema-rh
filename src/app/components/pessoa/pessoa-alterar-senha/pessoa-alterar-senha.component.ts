@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Pessoa } from "src/app/models/pessoa";
 import { Usuario } from "src/app/models/usuario";
@@ -16,8 +16,6 @@ export class PessoaAlterarSenhaComponent implements OnInit {
   recuperarForm!: FormGroup;
   usuario: Usuario;
   hide: boolean = true;
-  novaSenha: FormControl = new FormControl(null, Validators.minLength(3));
-  confirmaSenha: FormControl = new FormControl(null, Validators.minLength(3));
 
   constructor(
     private pessoaService: PessoaService,

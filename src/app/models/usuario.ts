@@ -1,4 +1,5 @@
 import { Cargo } from "./cargo";
+import { DetalhesResponsavel } from "./detalhesResponsavel";
 import { Pessoa } from "./pessoa";
 
 export class Usuario {
@@ -10,4 +11,5 @@ export class Usuario {
     cargo:   Cargo;
     dataEntrada: Date;
     ativo:      boolean;
+    responsavelDepartamento: DetalhesResponsavel;
   }

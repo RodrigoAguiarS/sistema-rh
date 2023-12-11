@@ -2,6 +2,8 @@ import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { forkJoin } from "rxjs";
 import { Cargo } from "src/app/models/cargo";
+import { Departamento } from "src/app/models/departamento";
+import { Empresa } from "src/app/models/empresa";
 import { Pessoa } from "src/app/models/pessoa";
 import { RefreshTokenResponse } from "src/app/models/refreshTokenResponse";
 import { Usuario } from "src/app/models/usuario";
@@ -35,6 +37,8 @@ export class HeaderComponent implements OnInit {
     this.usuario = new Usuario();
     this.usuario.pessoa = new Pessoa();
     this.usuario.cargo = new Cargo();
+    this.usuario.cargo.departamento = new Departamento();
+    this.usuario.cargo.departamento.empresa = new Empresa();
     this.carregarDadosIniciais();
   }
 
@@ -122,7 +126,6 @@ export class HeaderComponent implements OnInit {
     this.usuarioService.getUserInfo(token).subscribe({
       next: (userInfo: Usuario) => {
         this.usuario = userInfo;
-        console.log(userInfo);
         this.cdRef.markForCheck();
         this.userChangeService.notifyUserChanged();
       },

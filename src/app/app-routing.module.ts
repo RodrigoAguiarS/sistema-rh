@@ -46,7 +46,7 @@ import { EmpresaCreateComponent } from './components/empresa/empresa-create/empr
 import { EmpresaListComponent } from './components/empresa/empresa-list/empresa-list.component';
 import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
 import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empresa-delete.component';
-
+import { VinculoCreateComponent } from './components/vinculo/vinculo-create/vinculo-create.component';
 
 
 
@@ -102,6 +102,8 @@ const routes: Routes = [
       { path: "empresas/create", component: EmpresaCreateComponent },
       { path: "empresas/update/:id", component: EmpresaUpdateComponent },
       { path: "empresas/delete/:id", component: EmpresaDeleteComponent },
+
+      { path: "vinculos/create", component: VinculoCreateComponent },
       
       { path: "cargos", component: CargoListComponent },
       { path: "cargos/create", component: CargoCreateComponent },

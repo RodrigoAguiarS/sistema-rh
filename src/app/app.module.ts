@@ -84,6 +84,7 @@ import { EmpresaCreateComponent } from './components/empresa/empresa-create/empr
 import { EmpresaListComponent } from './components/empresa/empresa-list/empresa-list.component';
 import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
 import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empresa-delete.component';
+import { VinculoCreateComponent } from './components/vinculo/vinculo-create/vinculo-create.component';
 
 @NgModule({
   declarations: [
@@ -137,7 +138,8 @@ import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empr
     EmpresaCreateComponent,
     EmpresaListComponent,
     EmpresaUpdateComponent,
-    EmpresaDeleteComponent
+    EmpresaDeleteComponent,
+    VinculoCreateComponent
   ],
   imports: [
     BrowserModule,

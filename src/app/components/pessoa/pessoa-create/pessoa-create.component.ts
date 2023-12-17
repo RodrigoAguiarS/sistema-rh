@@ -6,11 +6,13 @@ import { Endereco } from 'src/app/models/endereco';
 import { EnderecoResposta } from 'src/app/models/enderecoReposta';
 import { Pessoa } from 'src/app/models/pessoa';
 import { Usuario } from 'src/app/models/usuario';
+import { Vinculo } from 'src/app/models/vinculo';
 import { AuthService } from 'src/app/services/auth.service';
 import { CargoService } from 'src/app/services/cargo.service';
 import { EnderecoService } from 'src/app/services/endereco.service';
 import { MensagemService } from 'src/app/services/mensagem.service';
 import { PessoaService } from 'src/app/services/pessoa.service';
+import { VinculoService } from 'src/app/services/vinculo.service';
 
 @Component({
   selector: 'app-pessoa-create',
@@ -23,6 +25,7 @@ export class PessoaCreateComponent implements OnInit {
   hide = true;
   roles: string[] = [];
   cargos: Cargo[] = [];
+  vinculos: Vinculo[] = [];
   
   enderecoPreenchido: boolean = false;
   
@@ -38,12 +41,13 @@ export class PessoaCreateComponent implements OnInit {
   cep: FormControl = new FormControl(null, Validators.required);
   numero: FormControl = new FormControl(null, Validators.required);
   cargo: FormControl = new FormControl(null, Validators.required);
-  confirmaSenha: FormControl = new FormControl(null, Validators.minLength(3));
+  vinculo: FormControl = new FormControl(null, Validators.required);
 
   constructor(
     private usuarioService: PessoaService,
     private authService: AuthService,
     private cargoService: CargoService,
+    private vinculoService: VinculoService,
     private mensagemService: MensagemService,
     private enderecoService: EnderecoService,
     private router: Router,
@@ -54,8 +58,10 @@ export class PessoaCreateComponent implements OnInit {
     this.usuario = new Usuario();
     this.usuario.pessoa = new Pessoa();
     this.usuario.pessoa.endereco = new Endereco();
+    this.usuario.vinculo = new Vinculo();
     this.usuario.perfis = [];
     this.findAllCargos();
+    this.findAllVinculos();
     this.authService.getUserRoles().subscribe({
       next: (roles: string[]) => {
         this.roles = roles;
@@ -78,6 +84,7 @@ export class PessoaCreateComponent implements OnInit {
     this.usuario.pessoa.endereco.cep = this.cep.value
     this.usuario.pessoa.endereco.numero = this.numero.value
     this.usuario.cargo = this.cargo.value
+    this.usuario.vinculo = this.vinculo.value
     this.usuario.dataEntrada = this.dataEntrada.value
     
     // Chamada do serviço para criar o usuário
@@ -110,6 +117,7 @@ export class PessoaCreateComponent implements OnInit {
       this.sexo.valid &&
       this.dataEntrada &&
       this.cargo &&
+      this.vinculo &&
       this.cep.valid &&
       this.numero.valid
     );
@@ -150,7 +158,7 @@ export class PessoaCreateComponent implements OnInit {
         }
       },
       error: (erro) => {
-        this.mensagemService.showErrorMensagem("Cep Inválido. Realize a busca novamente.");
+        this.mensagemService.showErrorMensagem(erro.error.message + " Cep Inválido. Realize a busca novamente.");
         this.enderecoPreenchido = false;
         this.limparCampos();
       }
@@ -173,9 +181,21 @@ export class PessoaCreateComponent implements OnInit {
     });
   }
 
+  findAllVinculos(): void {
+    this.vinculoService.findAll().subscribe((resposta) => {
+      this.vinculos = resposta;
+    });
+  }
+
   compareCargos(cargo1: any, cargo2: any): boolean {
     return cargo1 && cargo2
       ? cargo1.id === cargo2.id
       : cargo1 === cargo2;
+  }
+
+  compareVinculos(vinculo1: any, vinculo2: any): boolean {
+    return vinculo1 && vinculo2
+      ? vinculo1.id === vinculo2.id
+      : vinculo1 === vinculo2;
   }
 }

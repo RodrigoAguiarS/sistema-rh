@@ -5,9 +5,11 @@ import { Cargo } from "src/app/models/cargo";
 import { Endereco } from "src/app/models/endereco";
 import { Pessoa } from "src/app/models/pessoa";
 import { Usuario } from "src/app/models/usuario";
+import { Vinculo } from "src/app/models/vinculo";
 import { CargoService } from "src/app/services/cargo.service";
 import { MensagemService } from "src/app/services/mensagem.service";
 import { PessoaService } from "src/app/services/pessoa.service";
+import { VinculoService } from "src/app/services/vinculo.service";
 
 @Component({
   selector: "app-pessoa-delete",
@@ -17,11 +19,13 @@ import { PessoaService } from "src/app/services/pessoa.service";
 export class PessoaDeleteComponent implements OnInit {
   usuario: Usuario;
   cargos: Cargo[] = [];
+  vinculos: Vinculo[] = [];
 
   constructor(
     private pessoaService: PessoaService,
     private mensagemService: MensagemService,
     private cargoService: CargoService,
+    private vinculoService: VinculoService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -34,6 +38,7 @@ export class PessoaDeleteComponent implements OnInit {
     this.usuario.id = this.route.snapshot.paramMap.get("id");
     this.findById();
     this.findAllCargos();
+    this.findAllVinculos();
   }
 
   findById(): void {
@@ -62,6 +67,12 @@ export class PessoaDeleteComponent implements OnInit {
   findAllCargos(): void {
     this.cargoService.findAll().subscribe((resposta) => {
       this.cargos = resposta;
+    });
+  }
+
+  findAllVinculos(): void {
+    this.vinculoService.findAll().subscribe((resposta) => {
+      this.vinculos = resposta;
     });
   }
 

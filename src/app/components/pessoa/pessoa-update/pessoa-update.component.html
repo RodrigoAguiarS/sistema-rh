@@ -91,24 +91,35 @@
                 </mat-select>
                 <mat-icon matSuffix>work</mat-icon>
             </mat-form-field>
+
+
+        </div>
+        <div class="row-container">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label for="vinculo">{{usuario.vinculo.nome}}</mat-label>
+                <mat-select [(ngModel)]="usuario.vinculo" name="vinculo" [formControl]="vinculo" required
+                    [compareWith]="compareVinculos">
+                    <mat-option *ngFor="let vin of vinculos " [value]="vin">{{ vin.nome }}</mat-option>
+                </mat-select>
+                <mat-icon matSuffix>work</mat-icon>
+            </mat-form-field>
         </div>
 
         <h3 class="fullWidth">Endereço</h3>
         <div class="row-container">
-            <!-- numero -->
-            <mat-form-field class="fullWidth" appearance="outline">
-                <mat-label>Número da Casa</mat-label>
-                <input [(ngModel)]="usuario.pessoa.endereco.numero" name="numeroCasa" [formControl]="numero" required
-                    matInput placeholder="Ex.. 123">
-                <mat-icon matSuffix>home</mat-icon>
-            </mat-form-field>
-
             <!-- CEP -->
             <mat-form-field class="fullWidth" appearance="outline">
                 <mat-label>CEP</mat-label>
                 <input [(ngModel)]="usuario.pessoa.endereco.cep" name="cep" (change)="buscarEnderecoPorCep()"
                     [formControl]="cep" required matInput placeholder="Ex.. 12345-678" mask="00000-000">
                 <mat-icon matSuffix>location_on</mat-icon>
+            </mat-form-field>
+            <!-- numero -->
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>Número da Casa</mat-label>
+                <input [(ngModel)]="usuario.pessoa.endereco.numero" name="numeroCasa" [formControl]="numero" required
+                    matInput placeholder="Ex.. 123">
+                <mat-icon matSuffix>home</mat-icon>
             </mat-form-field>
         </div>
 

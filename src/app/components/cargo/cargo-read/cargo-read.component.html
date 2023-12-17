@@ -7,8 +7,7 @@
         <!-- nome -->
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Nome do Cargo</mat-label>
-            <input [(ngModel)]="cargo.nome" name="nome" readonly required matInput
-                placeholder="Nome do Cargo" >
+            <input [(ngModel)]="cargo.nome" name="nome" readonly required matInput placeholder="Nome do Cargo">
             <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
 
@@ -16,7 +15,7 @@
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Gestor do Departamento</mat-label>
             <input [(ngModel)]="cargo.responsavelAtual.nomeFuncionarioResponsavel" name="nomeFuncionarioResponsavel"
-                readonly required matInput placeholder="Nome do Gestor" >
+                readonly required matInput placeholder="Nome do Gestor">
             <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
 
@@ -26,8 +25,7 @@
                 <mat-label>Salário Base</mat-label>
                 <mat-icon matSuffix>attach_money</mat-icon>
                 <input matInput type="text" [(ngModel)]="cargo.salarioBase" name="salarioBase" readonly required
-                    placeholder="Ex. 5000" mask="separator.2" thousandSeparator="," decimalMarker="."
-                    >
+                    placeholder="Ex. 5000" mask="separator.2" thousandSeparator="," decimalMarker=".">
             </mat-form-field>
 
             <!-- departamento -->
@@ -54,8 +52,8 @@
         <form class="textarea">
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Responsabilidades do Cargo</mat-label>
-                <textarea maxlength="255" [(ngModel)]="cargo.responsabilidades" name="responsabilidades"
-                    readonly required class="responsabilidades read-only-field" matInput
+                <textarea maxlength="255" [(ngModel)]="cargo.responsabilidades" name="responsabilidades" readonly
+                    required class="responsabilidades read-only-field" matInput
                     placeholder="Ex. trocar bateria de notebook queimada..."></textarea>
                 <mat-icon matSuffix>assignment</mat-icon>
             </mat-form-field>

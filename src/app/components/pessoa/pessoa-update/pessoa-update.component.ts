@@ -6,11 +6,13 @@ import { Endereco } from "src/app/models/endereco";
 import { EnderecoResposta } from "src/app/models/enderecoReposta";
 import { Pessoa } from "src/app/models/pessoa";
 import { Usuario } from "src/app/models/usuario";
+import { Vinculo } from "src/app/models/vinculo";
 import { CargoService } from "src/app/services/cargo.service";
 import { EnderecoService } from "src/app/services/endereco.service";
 import { MensagemService } from "src/app/services/mensagem.service";
 import { PessoaService } from "src/app/services/pessoa.service";
 import { UserChangeService } from "src/app/services/user-change-service";
+import { VinculoService } from "src/app/services/vinculo.service";
 
 @Component({
   selector: "app-pessoa-update",
@@ -23,6 +25,8 @@ export class PessoaUpdateComponent implements OnInit {
   hide = true;
   roles: string[] = [];
   cargos: Cargo[] = [];
+  vinculos: Vinculo[] = [];
+  
   
   enderecoPreenchido: boolean = false;
 
@@ -38,12 +42,14 @@ export class PessoaUpdateComponent implements OnInit {
   cep: FormControl = new FormControl(null, Validators.required);
   numero: FormControl = new FormControl(null, Validators.minLength(1));
   confirmaSenha: FormControl = new FormControl(null, Validators.minLength(3));
+  vinculo: FormControl = new FormControl(null, Validators.required);
 
   constructor(
     private pessoaService: PessoaService,
     private mensagemService: MensagemService,
     private enderecoService: EnderecoService,
     private cargoService: CargoService,
+    private vinculoService: VinculoService,
     private route: ActivatedRoute,
     private router: Router,
     private userChangeService: UserChangeService
@@ -54,12 +60,10 @@ export class PessoaUpdateComponent implements OnInit {
     this.usuario.pessoa = new Pessoa();
     this.usuario.cargo = new Cargo();
     this.usuario.pessoa.endereco = new Endereco();
-    this.usuario.dataEntrada = this.dataEntrada.value;
-    this.usuario.pessoa.nome = this.nome.value;
-    this.usuario.pessoa.cpf = this.cpf.value;
-    this.usuario.email = this.email.value;
+    this.usuario.vinculo = new Vinculo();
     this.usuario.id = this.route.snapshot.paramMap.get("id");
     this.findAllCargos();
+    this.findAllVinculos();
     this.findById();
   }
 
@@ -72,6 +76,7 @@ export class PessoaUpdateComponent implements OnInit {
 
   // adiciona perfil ao usuário
   update(): void {
+    this.atualizarUsuarioComFormulario();
     this.pessoaService.update(this.usuario).subscribe({
       next: () => {
         this.mensagemService.showSuccessoMensagem(this.usuario.pessoa?.nome + " Atualizado com sucesso");
@@ -111,6 +116,7 @@ export class PessoaUpdateComponent implements OnInit {
       this.cargo.valid &&
       this.sexo.valid &&
       this.cep.valid &&
+      this.vinculo.valid &&
       this.numero.valid
     );
   }
@@ -161,9 +167,35 @@ export class PessoaUpdateComponent implements OnInit {
     });
   }
 
+  findAllVinculos(): void {
+    this.vinculoService.findAll().subscribe((resposta) => {
+      this.vinculos = resposta;
+    });
+  }
+
   compareCargos(cargo1: any, cargo2: any): boolean {
     return cargo1 && cargo2
       ? cargo1.id === cargo2.id
       : cargo1 === cargo2;
+  }
+
+  compareVinculos(vinculo1: any, vinculo2: any): boolean {
+    return vinculo1 && vinculo2
+      ? vinculo1.id === vinculo2.id
+      : vinculo1 === vinculo2;
+  }
+
+  atualizarUsuarioComFormulario(): void {
+    this.usuario.pessoa.nome = this.nome.value;
+    this.usuario.pessoa.cpf = this.cpf.value;
+    this.usuario.email = this.email.value;
+    this.usuario.pessoa.dataNascimento = this.dataNascimento.value;
+    this.usuario.pessoa.telefone = this.telefone.value;
+    this.usuario.pessoa.sexo = this.sexo.value;
+    this.usuario.pessoa.endereco.cep = this.cep.value;
+    this.usuario.pessoa.endereco.numero = this.numero.value;
+    this.usuario.cargo = this.cargo.value;
+    this.usuario.vinculo = this.vinculo.value;
+    this.usuario.dataEntrada = this.dataEntrada.value;
   }
 }

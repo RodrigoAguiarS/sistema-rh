@@ -6,9 +6,9 @@
 
         <h3 class="fullWidth">Perfil</h3>
         <!-- Perfil -->
-        <section  class="section">
-            <mat-checkbox [disabled]="true"  class="checkbox-container" color="primary">Admin</mat-checkbox>
-            <mat-checkbox [disabled]="true"  checked="true" class="checkbox-container"
+        <section class="section">
+            <mat-checkbox [disabled]="true" class="checkbox-container" color="primary">Admin</mat-checkbox>
+            <mat-checkbox [disabled]="true" checked="true" class="checkbox-container"
                 color="primary">Operadores</mat-checkbox>
         </section>
 
@@ -17,7 +17,7 @@
             <!-- Nome -->
             <mat-form-field class="fullWidth" appearance="outline">
                 <mat-label>Nome</mat-label>
-                <input [(ngModel)]="usuario.pessoa.nome" [disabled]="true" name="nome"  required matInput
+                <input [(ngModel)]="usuario.pessoa.nome" [disabled]="true" name="nome" required matInput
                     placeholder="Ex.. fulano de tal" maxlength="50">
                 <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
             </mat-form-field>
@@ -25,7 +25,7 @@
             <!-- Cpf -->
             <mat-form-field class="fullWidth" appearance="outline">
                 <mat-label>CPF</mat-label>
-                <input [(ngModel)]="usuario.pessoa.cpf" [disabled]="true" name="cpf"  required matInput
+                <input [(ngModel)]="usuario.pessoa.cpf" [disabled]="true" name="cpf" required matInput
                     placeholder="Ex..000.000.000-00" mask="000.000.000-00">
                 <mat-icon matSuffix>pin </mat-icon>
             </mat-form-field>
@@ -35,8 +35,8 @@
             <!-- data nascimento -->
             <mat-form-field class="fullWidth" appearance="outline">
                 <mat-label>Data de Nascimento</mat-label>
-                <input [(ngModel)]="usuario.pessoa.dataNascimento" [disabled]="true"  name="dataNascimento"
-                    matInput [matDatepicker]="picker1" placeholder="Ex.. 01/01/1990">
+                <input [(ngModel)]="usuario.pessoa.dataNascimento" [disabled]="true" name="dataNascimento" matInput
+                    [matDatepicker]="picker1" placeholder="Ex.. 01/01/1990">
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
@@ -57,7 +57,7 @@
             <!-- telefone -->
             <mat-form-field class="fullWidth" appearance="outline">
                 <mat-label>Telefone</mat-label>
-                <input [(ngModel)]="usuario.pessoa.telefone" [disabled]="true" name="telefone"  matInput
+                <input [(ngModel)]="usuario.pessoa.telefone" [disabled]="true" name="telefone" matInput
                     placeholder="Ex.. (99) 99999-9999" mask="(00) 00000-0000">
                 <mat-icon matSuffix>phone</mat-icon>
             </mat-form-field>
@@ -91,20 +91,31 @@
             </mat-form-field>
         </div>
 
+        <div class="row-container">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label for="vinculo">{{usuario.vinculo.nome}}</mat-label>
+                <mat-select [(ngModel)]="usuario.vinculo" [disabled]="true" name="vinculo" required>
+                    <mat-option *ngFor="let vin of vinculos " [value]="vin">{{ vin.nome }}</mat-option>
+                </mat-select>
+                <mat-icon matSuffix>work</mat-icon>
+            </mat-form-field>
+        </div>
+
         <h3 class="fullWidth">Endereço</h3>
         <div class="row-container">
             <!-- numero -->
             <mat-form-field class="fullWidth" appearance="outline">
                 <mat-label>Número da Casa</mat-label>
-                <input [(ngModel)]="usuario.pessoa.endereco.numero" [disabled]="true" name="numeroCasa" 
-                    matInput placeholder="Ex.. 123">
+                <input [(ngModel)]="usuario.pessoa.endereco.numero" [disabled]="true" name="numeroCasa" matInput
+                    placeholder="Ex.. 123">
                 <mat-icon matSuffix>home</mat-icon>
             </mat-form-field>
 
             <!-- CEP -->
             <mat-form-field class="fullWidth" appearance="outline">
                 <mat-label>CEP</mat-label>
-                <input [(ngModel)]="usuario.pessoa.endereco.cep" name="cep" [disabled]="true" required matInput placeholder="Ex.. 12345-678" mask="00000-000">
+                <input [(ngModel)]="usuario.pessoa.endereco.cep" name="cep" [disabled]="true" required matInput
+                    placeholder="Ex.. 12345-678" mask="00000-000">
                 <mat-icon matSuffix>location_on</mat-icon>
             </mat-form-field>
         </div>
@@ -113,16 +124,16 @@
             <!-- rua -->
             <mat-form-field class="fullWidth" appearance="outline">
                 <mat-label>Rua</mat-label>
-                <input [(ngModel)]="usuario.pessoa.endereco.rua" [disabled]="true" name="rua" 
-                    matInput placeholder="Ex.. Rua A">
+                <input [(ngModel)]="usuario.pessoa.endereco.rua" [disabled]="true" name="rua" matInput
+                    placeholder="Ex.. Rua A">
                 <mat-icon matSuffix>home</mat-icon>
             </mat-form-field>
 
             <!-- bairro -->
             <mat-form-field class="fullWidth" appearance="outline">
                 <mat-label>Bairro</mat-label>
-                <input [(ngModel)]="usuario.pessoa.endereco.bairro" [disabled]="true" name="bairro" 
-                    required matInput placeholder="Ex.. Bairro B">
+                <input [(ngModel)]="usuario.pessoa.endereco.bairro" [disabled]="true" name="bairro" required matInput
+                    placeholder="Ex.. Bairro B">
                 <mat-icon matSuffix>location_city</mat-icon>
             </mat-form-field>
         </div>
@@ -131,16 +142,16 @@
             <!-- cidade -->
             <mat-form-field class="fullWidth" appearance="outline">
                 <mat-label>Cidade</mat-label>
-                <input [(ngModel)]="usuario.pessoa.endereco.cidade" [disabled]="true" name="cidade"
-                    required matInput placeholder="Ex.. Cidade C">
+                <input [(ngModel)]="usuario.pessoa.endereco.cidade" [disabled]="true" name="cidade" required matInput
+                    placeholder="Ex.. Cidade C">
                 <mat-icon matSuffix>location_city</mat-icon>
             </mat-form-field>
 
             <!-- estado -->
             <mat-form-field class="fullWidth" appearance="outline">
                 <mat-label>Estado</mat-label>
-                <input [(ngModel)]="usuario.pessoa.endereco.estado" [disabled]="true" name="estado" 
-                    required matInput placeholder="Ex.. Estado E">
+                <input [(ngModel)]="usuario.pessoa.endereco.estado" [disabled]="true" name="estado" required matInput
+                    placeholder="Ex.. Estado E">
                 <mat-icon matSuffix>location_city</mat-icon>
             </mat-form-field>
         </div>

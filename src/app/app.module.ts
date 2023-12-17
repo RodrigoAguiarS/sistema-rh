@@ -85,6 +85,9 @@ import { EmpresaListComponent } from './components/empresa/empresa-list/empresa-
 import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
 import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empresa-delete.component';
 import { VinculoCreateComponent } from './components/vinculo/vinculo-create/vinculo-create.component';
+import { VinculoListComponent } from './components/vinculo/vinculo-list/vinculo-list.component';
+import { VinculoUpdateComponent } from './components/vinculo/vinculo-update/vinculo-update.component';
+import { VinculoDeleteComponent } from './components/vinculo/vinculo-delete/vinculo-delete.component'; 
 
 @NgModule({
   declarations: [
@@ -139,7 +142,10 @@ import { VinculoCreateComponent } from './components/vinculo/vinculo-create/vinc
     EmpresaListComponent,
     EmpresaUpdateComponent,
     EmpresaDeleteComponent,
-    VinculoCreateComponent
+    VinculoCreateComponent,
+    VinculoListComponent,
+    VinculoUpdateComponent,
+    VinculoDeleteComponent
   ],
   imports: [
     BrowserModule,

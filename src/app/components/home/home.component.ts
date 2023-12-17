@@ -5,6 +5,7 @@ import { DetalhesResponsavel } from 'src/app/models/detalhesResponsavel';
 import { Empresa } from 'src/app/models/empresa';
 import { Pessoa } from 'src/app/models/pessoa';
 import { Usuario } from 'src/app/models/usuario';
+import { Vinculo } from 'src/app/models/vinculo';
 import { UserChangeService } from 'src/app/services/user-change-service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -31,6 +32,7 @@ export class HomeComponent implements OnInit {
     this.usuario = new Usuario();
     this.usuario.pessoa = new Pessoa();
     this.usuario.cargo = new Cargo();
+    this.usuario.vinculo = new Vinculo();
     this.usuario.responsavelDepartamento = new DetalhesResponsavel();
     this.usuario.cargo.departamento = new Departamento();
     this.usuario.cargo.departamento.empresa = new Empresa();

@@ -87,7 +87,8 @@ import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empr
 import { VinculoCreateComponent } from './components/vinculo/vinculo-create/vinculo-create.component';
 import { VinculoListComponent } from './components/vinculo/vinculo-list/vinculo-list.component';
 import { VinculoUpdateComponent } from './components/vinculo/vinculo-update/vinculo-update.component';
-import { VinculoDeleteComponent } from './components/vinculo/vinculo-delete/vinculo-delete.component'; 
+import { VinculoDeleteComponent } from './components/vinculo/vinculo-delete/vinculo-delete.component';
+import { FuncionarioDemissaoComponent } from './components/funcionario/funcionario-demissao/funcionario-demissao.component'; 
 
 @NgModule({
   declarations: [
@@ -145,7 +146,8 @@ import { VinculoDeleteComponent } from './components/vinculo/vinculo-delete/vinc
     VinculoCreateComponent,
     VinculoListComponent,
     VinculoUpdateComponent,
-    VinculoDeleteComponent
+    VinculoDeleteComponent,
+    FuncionarioDemissaoComponent
   ],
   imports: [
     BrowserModule,

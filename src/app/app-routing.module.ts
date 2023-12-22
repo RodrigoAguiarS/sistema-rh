@@ -37,6 +37,7 @@ import { CargoUpdateComponent } from "./components/cargo/cargo-update/cargo-upda
 import { CargoReadComponent } from "./components/cargo/cargo-read/cargo-read.component";
 import { CargoDeleteComponent } from "./components/cargo/cargo-delete/cargo-delete.component";
 import { FuncionarioListComponent } from "./components/funcionario/funcionario-list/funcionario-list.component";
+import { FuncionarioDemissaoComponent } from './components/funcionario/funcionario-demissao/funcionario-demissao.component'; 
 import { AdministracaoComponent } from "./components/administracao/administracao/administracao.component";
 import { PessoaAlterarSenhaComponent } from "./components/pessoa/pessoa-alterar-senha/pessoa-alterar-senha.component";
 import { RegistroPontoCreateComponent } from "./components/registro/registro-ponto-create/registro-ponto-create.component";
@@ -80,6 +81,7 @@ const routes: Routes = [
       },
 
       { path: "funcionarios", component: FuncionarioListComponent },
+      { path: "funcionarios/demissao/:id", component: FuncionarioDemissaoComponent },
 
       { path: "administracao", component: AdministracaoComponent },
 

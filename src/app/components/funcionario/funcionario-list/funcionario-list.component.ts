@@ -17,6 +17,7 @@ export class FuncionarioListComponent implements OnInit {
   displayedColumns: string[] = [
     "id",
     "nome",
+    "vinculo",
     "cargo",
     "salarioBase",
     "dataAdmissao",
@@ -54,7 +55,7 @@ export class FuncionarioListComponent implements OnInit {
       const nomeFuncionario = (data.pessoa.nome || "").toLowerCase();
       const cargoFuncionario = (data.cargo.nome || "").toLowerCase();
       const salarioFuncionario = (data.cargo.salarioBase || "").toString().toLowerCase();
-      const dataEntradaFuncionario = (data.dataAdmissao || "").toString().toLowerCase();
+      const dataEntradaFuncionario = (data.dataEntrada || "").toString().toLowerCase();
       const departamentoFuncionario = (data.cargo.departamento.nome || "").toLowerCase();
       const gestorFuncionario = (data.responsavelAtual?.nomeFuncionarioResponsavel || "").toLowerCase();
 

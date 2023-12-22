@@ -165,6 +165,10 @@
             <label class="checkbox-label">{{ retornaStatus(usuario.ativo) }}</label>
         </div>
 
+        <span *ngIf="!validaCampos()" class="error-message">
+            Para atualizar uma pessoa é necessário preencher todos os campos.
+        </span>
+
         <div>
             <!-- butões -->
             <button (click)="update()" [disabled]="!validaCampos()" class="fullWidth mat-elevation-z4" mat-flat-button

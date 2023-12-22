@@ -31,6 +31,12 @@
                 <td mat-cell *matCellDef="let element"> {{ element.cargo.nome }} </td>
             </ng-container>
 
+            <!-- Vinculo -->
+            <ng-container matColumnDef="vinculo">
+                <th mat-header-cell *matHeaderCellDef> Vinculo </th>
+                <td mat-cell *matCellDef="let element"> {{ element.vinculo.nome }} </td>
+            </ng-container>
+
             <ng-container matColumnDef="salarioBase">
                 <th mat-header-cell *matHeaderCellDef> Salário </th>
                 <td mat-cell *matCellDef="let element"> {{ element.cargo.salarioBase | currency }} </td>
@@ -59,8 +65,8 @@
                     <a routerLink="update/{{ element.id }}">
                         <i class="material-icons edit">edit</i>
                     </a>
-                    <a routerLink="read/{{ element.id }}">
-                        <i class="material-icons read">visibility</i>
+                    <a routerLink="demissao/{{ element.id }}">
+                        <i class="material-icons person_off" title="Demitir Funcionário">person_off</i>
                     </a>
                     <a routerLink="delete/{{ element.id }}">
                         <i class="material-icons delete">delete</i>

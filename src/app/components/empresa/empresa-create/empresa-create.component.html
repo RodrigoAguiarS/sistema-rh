@@ -83,6 +83,10 @@
                 </mat-form-field>
             </div>
         </div>
+        <!-- span de erros -->
+        <span *ngIf="!empresaForm.valid" class="error-message">
+            Para cadastrar uma empresa é necessário preencher todos os campos.
+        </span>
 
         <button (click)="create()" [disabled]="!empresaForm.valid" class="full-width mat-elevation-z4" mat-flat-button
             color="primary">Cadastrar</button>

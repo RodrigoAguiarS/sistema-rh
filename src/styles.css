@@ -3,3 +3,10 @@
 @import '../node_modules/ngx-toastr/toastr.css';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 8px;
+    display: block;
+}

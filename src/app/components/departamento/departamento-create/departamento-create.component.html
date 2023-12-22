@@ -4,6 +4,8 @@
         <h1 class="full-width">Criando Departamento</h1>
         <img class="full-width" src="assets/img/chamado-create.svg" alt="Chamado image">
 
+        <h3 class="full-width">Dados do Departamento</h3>
+
         <div class="row-container">
             <!-- nome -->
             <mat-form-field class="full-width" appearance="outline">
@@ -25,6 +27,11 @@
             <textarea name="descricao" formControlName="descricao" required class="descricao" matInput
                 placeholder="Ex. descricao do departamento."></textarea>
         </mat-form-field>
+
+        <!-- span de erros -->
+        <span *ngIf="!departamentoForm.valid" class="error-message">
+            Por favor, preencha todos os campos para criar um departamento.
+        </span>
         <!-- butões -->
         <button (click)="create()" [disabled]="!departamentoForm.valid" class="full-width mat-elevation-z4"
             mat-raised-button color="primary">Cadastrar</button>

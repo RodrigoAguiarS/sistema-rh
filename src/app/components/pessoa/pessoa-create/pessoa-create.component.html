@@ -162,6 +162,9 @@
             <mat-checkbox [(ngModel)]="usuario.ativo" name="ativo" color="primary"></mat-checkbox>
             <label class="checkbox-label">{{ retornaStatus(usuario.ativo) }}</label>
         </div>
+        <span *ngIf="!validaCampos()" class="error-message">
+            Para cadastrar uma pessoa é necessário preencher todos os campos.
+        </span>
 
         <div>
             <!-- butões -->

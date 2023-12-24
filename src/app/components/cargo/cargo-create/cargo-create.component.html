@@ -35,7 +35,7 @@
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Descricao do Cargo</mat-label>
             <textarea maxlength="255" [(ngModel)]="cargo.descricao" name="descricao" [formControl]="descricao" required
-                class="descricao" matInput placeholder="Ex. trocar bateria de notebook queimada..."></textarea>
+                class="texto" matInput placeholder="Ex. trocar bateria de notebook queimada..."></textarea>
             <mat-icon matSuffix>description</mat-icon>
             <span class="contador">{{ descricao.value ? descricao.value.length : 0 }}/255</span>
         </mat-form-field>
@@ -45,7 +45,7 @@
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Responsabilidades do Cargo</mat-label>
                 <textarea maxlength="255" [(ngModel)]="cargo.responsabilidades" name="responsabilidades"
-                    [formControl]="responsabilidades" required class="responsabilidades" matInput
+                    [formControl]="responsabilidades" required class="texto" matInput
                     placeholder="Ex. trocar bateria de notebook queimada..."></textarea>
                 <mat-icon matSuffix>assignment</mat-icon>
                 <span class="contador">{{ responsabilidades.value ? responsabilidades.value.length : 0 }}/255</span>

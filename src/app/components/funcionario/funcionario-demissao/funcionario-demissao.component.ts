@@ -10,6 +10,7 @@ import { TipoDemissao } from 'src/app/models/tipoDemissao';
 import { Vinculo } from 'src/app/models/vinculo';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
 import { MensagemService } from 'src/app/services/mensagem.service';
+import { TipoDemissaoService } from 'src/app/services/tipo-demissao.service';
 
 @Component({
   selector: 'app-funcionario-demissao',
@@ -19,10 +20,11 @@ import { MensagemService } from 'src/app/services/mensagem.service';
 export class FuncionarioDemissaoComponent implements OnInit {
   funcionarioForm: FormGroup;
   funcionario: Funcionario;
-  tiposDemissao: TipoDemissao[] = Object.values(TipoDemissao);
+  tiposDemissoes: TipoDemissao[] = []
 
   constructor(
     private funcionarioService: FuncionarioService,
+    private tipoDemissaoService: TipoDemissaoService,
     private mensagemService: MensagemService,
     private router: Router,
     private formBuilder: FormBuilder,
@@ -37,18 +39,18 @@ export class FuncionarioDemissaoComponent implements OnInit {
     this.funcionario.responsavelAtual = new DetalhesResponsavel();
     this.funcionario.id = this.route.snapshot.paramMap.get('id');
     this.initForm();
+    this.findAllTipoDemissaoAtivo();
     this.findById();
   }
 
   findById(): void {
     this.funcionarioService.findById(this.funcionario.id).subscribe((resposta) => {
       this.funcionario = resposta;
-
       // Popule os dados no formulário após obter a resposta
       this.funcionarioForm.patchValue({
         nome: this.funcionario.pessoa.nome,
-        motivo: '',  // Preencha conforme necessário
-        tipoDemissao: '',  // Preencha conforme necessário
+        motivo: '',
+        tipoDemissao: '',
         vinculo: this.funcionario.vinculo.nome,
         cargo: this.funcionario.cargo.nome,
         dataEntrada: this.funcionario.dataEntrada,
@@ -71,9 +73,9 @@ export class FuncionarioDemissaoComponent implements OnInit {
 
   demitir(): void {
     if (this.funcionarioForm.valid) {
-      const demissaoDto: Demissao = this.funcionarioForm.value;
+      const demissao: Demissao = this.funcionarioForm.value;
 
-      this.funcionarioService.demitirFuncionario(this.funcionario.id, demissaoDto).subscribe({
+      this.funcionarioService.demitirFuncionario(this.funcionario.id, demissao).subscribe({
         next: () => {
           this.mensagemService.showSuccessoMensagem('Funcionário demitido com sucesso');
           this.router.navigate(['funcionarios']);
@@ -84,10 +86,16 @@ export class FuncionarioDemissaoComponent implements OnInit {
               this.mensagemService.showErrorMensagem(element.message);
             });
           } else {
-            this.mensagemService.showErrorMensagem(ex.error.message);
+            this.mensagemService.showErrorMensagem(ex.error);
           }
         },
       });
     }
   }
-}
+
+  findAllTipoDemissaoAtivo(): void {
+    this.tipoDemissaoService.findAll().subscribe(resposta => {
+      this.tiposDemissoes = resposta;
+    })
+  }
+}  

@@ -1,6 +1,7 @@
-export enum TipoDemissao {
-    SEM_JUSTA_CAUSA = 'SEM_JUSTA_CAUSA',
-    PEDIDO_DE_DEMISSAO = 'PEDIDO_DE_DEMISSAO',
-    ACORDO_ENTRE_PARTES = 'ACORDO_ENTRE_PARTES',
-    DEMISSAO_CONSENSUAL = 'DEMISSAO_CONSENSUAL',
+
+export class TipoDemissao {
+    id?: any;
+    nome: string;
+    descricao: string;
+    ativo: boolean;
   }

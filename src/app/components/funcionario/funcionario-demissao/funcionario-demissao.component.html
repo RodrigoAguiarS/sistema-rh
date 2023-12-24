@@ -46,19 +46,17 @@
                 <mat-icon matSuffix>attach_money</mat-icon>
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Selecione um Tipo de Demissão</mat-label>
-                <mat-select formControlName="tipoDemissao" required>
-                    <mat-option *ngFor="let tipoDemissao of tiposDemissao" [value]="tipoDemissao">
-                        {{ tipoDemissao }}
-                    </mat-option>
+                <mat-select formControlName="tipoDemissao" name="tipoDemissao" required>
+                    <mat-option *ngFor="let tip of tiposDemissoes" [value]="tip">{{ tip.nome }}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
 
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Motivo da Demissão</mat-label>
-            <textarea #motivoTextarea formControlName="motivo" matInput
+            <textarea class="descricao" #motivoTextarea formControlName="motivo" matInput
                 placeholder="Ex. Novas oportunidades"></textarea>
             <span class="contador">{{ motivoTextarea.value ? motivoTextarea.value.length : 0 }}/255</span>
         </mat-form-field>

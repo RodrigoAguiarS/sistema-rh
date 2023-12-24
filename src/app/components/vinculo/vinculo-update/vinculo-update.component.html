@@ -14,8 +14,9 @@
         <!-- descrição -->
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Descrição do Vínculo</mat-label>
-            <textarea name="descricao" formControlName="descricao" required class="texto" matInput
+            <textarea #descricaoTextarea name="descricao" formControlName="descricao" required class="texto" matInput
                 placeholder="Ex. Descrição do vínculo."></textarea>
+                <span class="contador">{{ descricaoTextarea.value ? descricaoTextarea.value.length : 0 }}/255</span>
         </mat-form-field>
 
         <!-- ativo -->

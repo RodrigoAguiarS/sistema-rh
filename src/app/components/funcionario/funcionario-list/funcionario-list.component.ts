@@ -54,6 +54,7 @@ export class FuncionarioListComponent implements OnInit {
     this.dataSource.filterPredicate = (data: Funcionario) => {
       const nomeFuncionario = (data.pessoa.nome || "").toLowerCase();
       const cargoFuncionario = (data.cargo.nome || "").toLowerCase();
+      const vinculoFuncionario = (data.vinculo.nome || "").toLowerCase();
       const salarioFuncionario = (data.cargo.salarioBase || "").toString().toLowerCase();
       const dataEntradaFuncionario = (data.dataEntrada || "").toString().toLowerCase();
       const departamentoFuncionario = (data.cargo.departamento.nome || "").toLowerCase();
@@ -63,6 +64,7 @@ export class FuncionarioListComponent implements OnInit {
         nomeFuncionario.includes(filterValue) ||
         cargoFuncionario.includes(filterValue) ||
         salarioFuncionario.includes(filterValue) ||
+        vinculoFuncionario.includes(filterValue) ||
         departamentoFuncionario.includes(filterValue) ||
         dataEntradaFuncionario.includes(filterValue) ||
         gestorFuncionario.includes(filterValue)

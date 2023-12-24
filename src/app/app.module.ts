@@ -88,7 +88,11 @@ import { VinculoCreateComponent } from './components/vinculo/vinculo-create/vinc
 import { VinculoListComponent } from './components/vinculo/vinculo-list/vinculo-list.component';
 import { VinculoUpdateComponent } from './components/vinculo/vinculo-update/vinculo-update.component';
 import { VinculoDeleteComponent } from './components/vinculo/vinculo-delete/vinculo-delete.component';
-import { FuncionarioDemissaoComponent } from './components/funcionario/funcionario-demissao/funcionario-demissao.component'; 
+import { FuncionarioDemissaoComponent } from './components/funcionario/funcionario-demissao/funcionario-demissao.component';
+import { TipoDemissaoCreateComponent } from './components/tipoDemissao/tipo-demissao-create/tipo-demissao-create.component';
+import { TipoDemissaoListComponent } from './components/tipoDemissao/tipo-demissao-list/tipo-demissao-list.component';
+import { TipoDemissaoUpdateComponent } from './components/tipoDemissao/tipo-demissao-update/tipo-demissao-update.component';
+import { TipoDemissaoDeleteComponent } from './components/tipoDemissao/tipo-demissao-delete/tipo-demissao-delete.component';
 
 @NgModule({
   declarations: [
@@ -147,7 +151,11 @@ import { FuncionarioDemissaoComponent } from './components/funcionario/funcionar
     VinculoListComponent,
     VinculoUpdateComponent,
     VinculoDeleteComponent,
-    FuncionarioDemissaoComponent
+    FuncionarioDemissaoComponent,
+    TipoDemissaoCreateComponent,
+    TipoDemissaoListComponent,
+    TipoDemissaoUpdateComponent,
+    TipoDemissaoDeleteComponent
   ],
   imports: [
     BrowserModule,

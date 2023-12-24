@@ -51,7 +51,10 @@ import { VinculoCreateComponent } from './components/vinculo/vinculo-create/vinc
 import { VinculoListComponent } from './components/vinculo/vinculo-list/vinculo-list.component';
 import { VinculoUpdateComponent } from './components/vinculo/vinculo-update/vinculo-update.component'; 
 import { VinculoDeleteComponent } from './components/vinculo/vinculo-delete/vinculo-delete.component';
-
+import { TipoDemissaoCreateComponent } from './components/tipoDemissao/tipo-demissao-create/tipo-demissao-create.component'; 
+import { TipoDemissaoListComponent } from './components/tipoDemissao/tipo-demissao-list/tipo-demissao-list.component';
+import { TipoDemissaoUpdateComponent } from './components/tipoDemissao/tipo-demissao-update/tipo-demissao-update.component';
+import { TipoDemissaoDeleteComponent } from './components/tipoDemissao/tipo-demissao-delete/tipo-demissao-delete.component';
 
 
 
@@ -110,6 +113,11 @@ const routes: Routes = [
       { path: "vinculos/create", component: VinculoCreateComponent },
       { path: "vinculos/update/:id", component: VinculoUpdateComponent },
       { path: "vinculos/delete/:id", component: VinculoDeleteComponent },
+
+      { path: "tiposDemisao", component: TipoDemissaoListComponent },
+      { path: "tiposDemisao/create", component: TipoDemissaoCreateComponent },
+      { path: "tiposDemisao/update/:id", component: TipoDemissaoUpdateComponent },
+      { path: "tiposDemisao/delete/:id", component: TipoDemissaoDeleteComponent },
       
       { path: "cargos", component: CargoListComponent },
       { path: "cargos/create", component: CargoCreateComponent },

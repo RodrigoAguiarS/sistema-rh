@@ -1,42 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TipoDemissao } from 'src/app/models/tipoDemissao';
+import { TipoDesconto } from 'src/app/models/tipoDesconto';
 import { MensagemService } from 'src/app/services/mensagem.service';
-import { TipoDemissaoService } from 'src/app/services/tipo-demissao.service';
+import { TipoDescontoService } from 'src/app/services/tipo-desconto.service';
 
 @Component({
-  selector: 'app-tipo-demissao-create',
-  templateUrl: './tipo-demissao-create.component.html',
-  styleUrls: ['./tipo-demissao-create.component.css']
+  selector: 'app-tipo-desconto-create',
+  templateUrl: './tipo-desconto-create.component.html',
+  styleUrls: ['./tipo-desconto-create.component.css']
 })
-export class TipoDemissaoCreateComponent implements OnInit {
+export class TipoDescontoCreateComponent implements OnInit {
 
-  tipoDemissaoForm!: FormGroup;
+  tipoDescontoForm!: FormGroup;
 
-  tipoDemissao: TipoDemissao;
+  tipoDesconto: TipoDesconto;
 
   constructor(
     private mensagemService: MensagemService,
-    private tipoDemissaoService: TipoDemissaoService,
+    private tipoDescontoService: TipoDescontoService,
     private formBuilder: FormBuilder,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.tipoDemissao = new TipoDemissao();
+    this.tipoDesconto = new TipoDesconto();
     this.initForm();
   }
 
   create(): void {
-    this.tipoDemissao = this.tipoDemissaoForm.value;
-    // Chamada do serviço para criar o usuário
-    this.tipoDemissaoService.create(this.tipoDemissao).subscribe({
+    this.tipoDesconto = this.tipoDescontoForm.value;
+    
+    this.tipoDescontoService.create(this.tipoDesconto).subscribe({
       next: (resposta) => {
         this.mensagemService.showSuccessoMensagem(
-          "tipoDemissao " + resposta.nome + " cadastrado com sucesso"
+          "tipoDesconto " + resposta.nome + " cadastrado com sucesso"
         );
-        this.router.navigate(["tiposDemissao"]);
+        this.router.navigate(["tiposDesconto"]);
       },
       error: (ex) => {
         if (ex.error.errors) {
@@ -51,7 +51,7 @@ export class TipoDemissaoCreateComponent implements OnInit {
   }
 
   initForm(): void {
-    this.tipoDemissaoForm = this.formBuilder.group({
+    this.tipoDescontoForm = this.formBuilder.group({
       nome: ["", Validators.required],
       descricao: ["",Validators.required],
       ativo: [null,Validators.required],

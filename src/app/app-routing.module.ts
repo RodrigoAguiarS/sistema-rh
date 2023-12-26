@@ -38,6 +38,7 @@ import { CargoReadComponent } from "./components/cargo/cargo-read/cargo-read.com
 import { CargoDeleteComponent } from "./components/cargo/cargo-delete/cargo-delete.component";
 import { FuncionarioListComponent } from "./components/funcionario/funcionario-list/funcionario-list.component";
 import { FuncionarioDemissaoComponent } from './components/funcionario/funcionario-demissao/funcionario-demissao.component'; 
+import { FuncionarioDescontoComponent } from './components/funcionario/funcionario-desconto/funcionario-desconto.component';
 import { AdministracaoComponent } from "./components/administracao/administracao/administracao.component";
 import { PessoaAlterarSenhaComponent } from "./components/pessoa/pessoa-alterar-senha/pessoa-alterar-senha.component";
 import { RegistroPontoCreateComponent } from "./components/registro/registro-ponto-create/registro-ponto-create.component";
@@ -55,6 +56,12 @@ import { TipoDemissaoCreateComponent } from './components/tipoDemissao/tipo-demi
 import { TipoDemissaoListComponent } from './components/tipoDemissao/tipo-demissao-list/tipo-demissao-list.component';
 import { TipoDemissaoUpdateComponent } from './components/tipoDemissao/tipo-demissao-update/tipo-demissao-update.component';
 import { TipoDemissaoDeleteComponent } from './components/tipoDemissao/tipo-demissao-delete/tipo-demissao-delete.component';
+import { TipoDescontoCreateComponent } from './components/tipoDesconto/tipo-desconto-create/tipo-desconto-create.component';
+import { TipoDescontoListComponent } from './components/tipoDesconto/tipo-desconto-list/tipo-desconto-list.component';
+import { TipoDescontoUpdateComponent } from './components/tipoDesconto/tipo-desconto-update/tipo-desconto-update.component';
+import { TipoDescontoDeleteComponent } from './components/tipoDesconto/tipo-desconto-delete/tipo-desconto-delete.component';
+import { FuncionarioGerarFolhaPagamentoComponent } from './components/funcionario/funcionario-gerar-folha-pagamento/funcionario-gerar-folha-pagamento.component';
+import { FuncionarioGerarTodosFolhaPagamentoComponent } from './components/funcionario/funcionario-gerar-todos-folha-pagamento/funcionario-gerar-todos-folha-pagamento.component';
 
 
 
@@ -85,6 +92,9 @@ const routes: Routes = [
 
       { path: "funcionarios", component: FuncionarioListComponent },
       { path: "funcionarios/demissao/:id", component: FuncionarioDemissaoComponent },
+      { path: "funcionarios/descontos/:id", component: FuncionarioDescontoComponent },
+      { path: "funcionarios/gerar/:id", component: FuncionarioGerarFolhaPagamentoComponent },
+      { path: "funcionarios/gerarTodos", component: FuncionarioGerarTodosFolhaPagamentoComponent },
 
       { path: "administracao", component: AdministracaoComponent },
 
@@ -114,10 +124,15 @@ const routes: Routes = [
       { path: "vinculos/update/:id", component: VinculoUpdateComponent },
       { path: "vinculos/delete/:id", component: VinculoDeleteComponent },
 
-      { path: "tiposDemisao", component: TipoDemissaoListComponent },
-      { path: "tiposDemisao/create", component: TipoDemissaoCreateComponent },
-      { path: "tiposDemisao/update/:id", component: TipoDemissaoUpdateComponent },
-      { path: "tiposDemisao/delete/:id", component: TipoDemissaoDeleteComponent },
+      { path: "tiposDemissao", component: TipoDemissaoListComponent },
+      { path: "tiposDemissao/create", component: TipoDemissaoCreateComponent },
+      { path: "tiposDemissao/update/:id", component: TipoDemissaoUpdateComponent },
+      { path: "tiposDemissao/delete/:id", component: TipoDemissaoDeleteComponent },
+
+      { path: "tiposDesconto", component: TipoDescontoListComponent },
+      { path: "tiposDesconto/create", component: TipoDescontoCreateComponent },
+      { path: "tiposDesconto/update/:id", component:  TipoDescontoUpdateComponent },
+      { path: "tiposDesconto/delete/:id", component: TipoDescontoDeleteComponent },
       
       { path: "cargos", component: CargoListComponent },
       { path: "cargos/create", component: CargoCreateComponent },

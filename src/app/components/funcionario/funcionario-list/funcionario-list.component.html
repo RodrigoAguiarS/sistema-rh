@@ -2,6 +2,8 @@
 
     <h1>Lista de Funcionários</h1>
 
+    <button routerLink="gerarTodos" class="mat-elevation-z8" mat-stroked-button color="primary">Gerar folha de pagamento para todos</button>
+
     <mat-form-field appearance="standard">
         <mat-label>Realize sua busca aqui...</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. A Data precisa ser no formato yyyy-MM-dd" #input>
@@ -43,7 +45,7 @@
             </ng-container>
 
             <!-- departamento -->
-             <ng-container matColumnDef="dataAdmissao">
+            <ng-container matColumnDef="dataAdmissao">
                 <th mat-header-cell *matHeaderCellDef> Data de Admissão </th>
                 <td mat-cell *matCellDef="let element"> {{ element.dataAdmissao | date:'dd-MM-yyyy'}} </td>
             </ng-container>
@@ -55,34 +57,32 @@
 
             <ng-container matColumnDef="gestor">
                 <th mat-header-cell *matHeaderCellDef> Gestor </th>
-                <td mat-cell *matCellDef="let element"> {{ element.responsavelAtual?.nomeFuncionarioResponsavel || 'N/A' }} </td>
+                <td mat-cell *matCellDef="let element"> {{ element.responsavelAtual?.nomeFuncionarioResponsavel || 'N/A'
+                    }} </td>
             </ng-container>
 
             <!-- Ações -->
             <ng-container matColumnDef="acoes">
                 <th mat-header-cell *matHeaderCellDef> Ações </th>
-                <td mat-cell *matCellDef="let element">
-                <!--    <a routerLink="update/{{ element.id }}">
-                        <i class="material-icons edit">edit</i>
+                <td mat-cell *matCellDef="let element"> 
+                    <a routerLink="descontos/{{ element.id }}">
+                        <i class="material-icons edit" title="Adicionar Desconto">money_off</i>
                     </a>
-                -->
                     <a routerLink="demissao/{{ element.id }}">
                         <i class="material-icons person_off" title="Demitir Funcionário">person_off</i>
+                    </a>  
+                    <a routerLink="gerar/{{ element.id }}">
+                        <i class="material-icons delete" title="Gerar folha de pagamento">description</i>
                     </a>
-                <!--    
-                    <a routerLink="delete/{{ element.id }}">
-                        <i class="material-icons delete">delete</i>
-                    </a>
-                -->   
                 </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row [class.odd-row]="getLinhaImpar(i)" *matRowDef="let row; columns: displayedColumns; let i = index;"></tr>
+            <tr mat-row [class.odd-row]="getLinhaImpar(i)"
+                *matRowDef="let row; columns: displayedColumns; let i = index;"></tr>
         </table>
 
         <mat-paginator [pageSizeOptions]="[5, 2, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
     </div>
 
 </div>
-

@@ -41,7 +41,7 @@ export class TipoDemissaoUpdateComponent implements OnInit {
         this.mensagemService.showSuccessoMensagem(
           "Tipo de Demissão " + resposta.nome + " atualizado com sucesso"
         );
-        this.router.navigate(["tiposDemisao"]);
+        this.router.navigate(["tiposDemissao"]);
       },
       error: (ex) => {
         if (ex.error.errors) {

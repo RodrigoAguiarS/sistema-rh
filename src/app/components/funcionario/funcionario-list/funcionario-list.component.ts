@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
 import { Funcionario } from "src/app/models/funcionario";
+import { FolhaDePagamentoService } from "src/app/services/folha-de-pagamento.service";
 import { FuncionarioService } from "src/app/services/funcionario.service";
 import { UtilService } from "src/app/services/util.service";
 
@@ -39,7 +40,6 @@ export class FuncionarioListComponent implements OnInit {
   findAll(): void {
     this.funcionarioService.findAllFuncinarios().subscribe((resposta) => {
       this.ELEMENT_DATA = resposta;
-      console.log(this.ELEMENT_DATA);
       this.dataSource = new MatTableDataSource<Funcionario>(resposta);
       this.dataSource.paginator = this.paginator;
     });
@@ -73,6 +73,7 @@ export class FuncionarioListComponent implements OnInit {
 
     this.dataSource.filter = filterValue;
   }
+
   getLinhaImpar(index: number): boolean {
     return this.utilService.linhaImpar(index);
   }

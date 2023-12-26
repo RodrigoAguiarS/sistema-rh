@@ -93,6 +93,13 @@ import { TipoDemissaoCreateComponent } from './components/tipoDemissao/tipo-demi
 import { TipoDemissaoListComponent } from './components/tipoDemissao/tipo-demissao-list/tipo-demissao-list.component';
 import { TipoDemissaoUpdateComponent } from './components/tipoDemissao/tipo-demissao-update/tipo-demissao-update.component';
 import { TipoDemissaoDeleteComponent } from './components/tipoDemissao/tipo-demissao-delete/tipo-demissao-delete.component';
+import { TipoDescontoCreateComponent } from './components/tipoDesconto/tipo-desconto-create/tipo-desconto-create.component';
+import { TipoDescontoListComponent } from './components/tipoDesconto/tipo-desconto-list/tipo-desconto-list.component';
+import { TipoDescontoUpdateComponent } from './components/tipoDesconto/tipo-desconto-update/tipo-desconto-update.component';
+import { TipoDescontoDeleteComponent } from './components/tipoDesconto/tipo-desconto-delete/tipo-desconto-delete.component';
+import { FuncionarioDescontoComponent } from './components/funcionario/funcionario-desconto/funcionario-desconto.component';
+import { FuncionarioGerarFolhaPagamentoComponent } from './components/funcionario/funcionario-gerar-folha-pagamento/funcionario-gerar-folha-pagamento.component';
+import { FuncionarioGerarTodosFolhaPagamentoComponent } from './components/funcionario/funcionario-gerar-todos-folha-pagamento/funcionario-gerar-todos-folha-pagamento.component';
 
 @NgModule({
   declarations: [
@@ -155,7 +162,14 @@ import { TipoDemissaoDeleteComponent } from './components/tipoDemissao/tipo-demi
     TipoDemissaoCreateComponent,
     TipoDemissaoListComponent,
     TipoDemissaoUpdateComponent,
-    TipoDemissaoDeleteComponent
+    TipoDemissaoDeleteComponent,
+    TipoDescontoCreateComponent,
+    TipoDescontoListComponent,
+    TipoDescontoUpdateComponent,
+    TipoDescontoDeleteComponent,
+    FuncionarioDescontoComponent,
+    FuncionarioGerarFolhaPagamentoComponent,
+    FuncionarioGerarTodosFolhaPagamentoComponent,
   ],
   imports: [
     BrowserModule,

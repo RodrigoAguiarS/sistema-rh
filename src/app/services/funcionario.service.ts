@@ -1,8 +1,10 @@
+import { TipoDesconto } from './../models/tipoDesconto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Funcionario } from '../models/funcionario';
 import { Observable } from 'rxjs';
 import { API_CONFIG } from '../config/api.config';
+import { Demissao } from '../models/demissao';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,11 @@ export class FuncionarioService {
     return this.http.get<Funcionario>(`${API_CONFIG.baseUrl}/api/funcionarios/${id}`);
   }
 
-  demitirFuncionario(id: any, demissaoDto: any): Observable<any> {
-    return this.http.post<any>(`${API_CONFIG.baseUrl}/api/funcionarios/demitir/${id}`, demissaoDto);
+  demitirFuncionario(id: any, demissao: Demissao): Observable<Demissao> {
+    return this.http.post<any>(`${API_CONFIG.baseUrl}/api/funcionarios/demitir/${id}`, demissao);
+  }
+
+  adicionarTiposDesconto(id: any, tiposDesconto: TipoDesconto[]): Observable<TipoDesconto> {
+    return this.http.post<TipoDesconto>(`${API_CONFIG.baseUrl}/api/funcionarios/${id}/atribuir-tipos-desconto`, tiposDesconto);
   }
 }
